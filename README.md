@@ -7,7 +7,6 @@ The following following tools have been configured:
 - [Jest](https://www.npmjs.com/package/jest) for unit testing
 - [ESLint](https://www.npmjs.com/package/eslint) for linting
 - [Prettier](https://www.npmjs.com/package/prettier) for code formatting
-- [ts-node](https://www.npmjs.com/package/ts-node) for running TypeScript scripts
 - [TypeScript](https://www.npmjs.com/package/typescript) for TypeScript support
 
 ## Usage
@@ -21,7 +20,6 @@ npm ci
 ### Edit the code
 
 You can edit the code in the `src` directory.
-The entry point of your application is `src/main.ts`.
 
 ### Run the application in development mode
 
@@ -29,19 +27,15 @@ The entry point of your application is `src/main.ts`.
 npm run dev
 ```
 
-Note: The project uses [ts-node](https://www.npmjs.com/package/ts-node) to run TypeScript code on the fly.
-
-### Compile the application
+### Build the application
 
 ```bash
-npm run compile
+npm run build
 ```
 
-This will create a `dist` directory with the compiled code.
+This will create a `build` directory with the built application.
 
-Note: The `dist` directory will mimic the main directory structure. All directories with TypeScript files will be recreated in the `dist` directory. In the default configuration those are `src` and `test`.
-
-### Run the compiled application
+### Run the build application
 
 To run with `NODE_ENV=development`:
 
@@ -55,7 +49,7 @@ To run with `NODE_ENV=production`:
 npm run start
 ```
 
-Note: This will command will fail if the application has not been compiled (no `dist` directory)!
+Note: This will command will fail if the application has not been built (no `build` directory)!
 
 ### Test the application
 
@@ -128,18 +122,18 @@ npm run npm-audit-check
 
 ### TypeScript check
 
-Check if the code compiles:
+Check if the `.ts` files are valid TypeScript code.
 
 ```bash
 npm run typescript-check
 ```
 
-### Compiling the application
+### Building the application
 
 This job requires all the previous formatting-unrelated jobs to pass.
 
 ```bash
-npm run compile
+npm run build
 ```
 
-You can later download the compiled code as an artifact named `dist`.
+You can later download the built application as an artifact named `build`.

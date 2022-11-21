@@ -67,8 +67,8 @@ jobs:
       - name: Run TypeScript
         run: |
           npm run typescript-check
-  compile:
-    name: Compile
+  build:
+    name: Build
     needs: [eslint-check, jest-check, npm-audit-check, typescript-check]
     runs-on: ubuntu-latest
     steps:
@@ -77,11 +77,11 @@ jobs:
       - name: Install dependencies
         run: |
           npm ci
-      - name: Compile
+      - name: Build
         run: |
-          npm run compile
-      - name: Upload dist
+          npm run build
+      - name: Upload build
         uses: actions/upload-artifact@v3
         with:
-          name: dist
-          path: dist
+          name: build
+          path: build

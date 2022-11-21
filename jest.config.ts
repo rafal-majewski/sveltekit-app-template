@@ -12,6 +12,8 @@ const config: JestConfigWithTsJest = {
 		"/.vscode/",
 		"/.git/",
 		"/.github/",
+		"/build/",
+		"/.svelte-kit/",
 	],
 };
 

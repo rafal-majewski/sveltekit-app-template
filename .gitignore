@@ -2,3 +2,5 @@ node_modules/
 .vscode/
 dist/
 coverage_report/
+build/
+.svelte-kit/
