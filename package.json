@@ -2,7 +2,6 @@
 	"name": "sveltekit-app-template",
 	"version": "0.0.0",
 	"description": "SvelteKit app template",
-	"main": "./src/main.ts",
 	"scripts": {
 		"start": "NODE_ENV=production node ./build/index.js",
 		"build": "svelte-kit sync && vite build",
