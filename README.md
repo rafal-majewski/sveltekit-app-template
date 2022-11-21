@@ -4,7 +4,8 @@ This is a template for a SvelteKit TypeScript project.
 
 The following following tools have been configured:
 
-- [Jest](https://www.npmjs.com/package/jest) for unit testing
+- [Vitest](https://www.npmjs.com/package/vitest) for unit testing
+- [Playwright](https://www.npmjs.com/package/playwright) for end-to-end testing
 - [ESLint](https://www.npmjs.com/package/eslint) for linting
 - [Prettier](https://www.npmjs.com/package/prettier) for code formatting
 - [TypeScript](https://www.npmjs.com/package/typescript) for TypeScript support
@@ -54,14 +55,22 @@ Note: This will command will fail if the application has not been built (no `bui
 ### Test the application
 
 Tests can be found in the `test` directory.
-[Jest](https://www.npmjs.com/package/jest) is used to run and write the tests.
+[Vitest](https://www.npmjs.com/package/vitest) is used to run and write the tests.
+
+To run the unit tests:
 
 ```bash
-npm run jest-check
+npm run vitest-check
 ```
 
 This will run the tests and also providing a tabular code coverage report.
 An HTML code coverage report will be also generated in the `coverage_report` directory.
+
+To run the end-to-end tests:
+
+```bash
+npm run playwright-check
+```
 
 ### Run the linter
 
@@ -106,13 +115,19 @@ npm run eslint-check
 npm run prettier-check
 ```
 
-### Jest check
+### Vitest check
 
 ```bash
 npm run vitest-check
 ```
 
 You can later download the coverage report as an artifact named `coverage_report`.
+
+### Playwright check
+
+```bash
+npm run playwright-check
+```
 
 ### npm audit check
 

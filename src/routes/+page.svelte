@@ -2,7 +2,7 @@
 	import {TodosList} from "$lib/features/todos";
 	import favicon from "./favicon.png";
 	import type {Todo} from "$lib/features/todos";
-	const todos: Todo[] = [{content: "Hello world", id: 1, isCompleted: false}];
+	const todos: Todo[] = [{content: "My first todo", id: 1, isCompleted: false}];
 </script>
 
 <svelte:head>

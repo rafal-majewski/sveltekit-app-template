@@ -30,15 +30,9 @@ module.exports = {
 				tsconfigRootDir: __dirname,
 				sourceType: "module",
 				ecmaVersion: 13,
-				extraFileExtensions: [".svelte"],
 			},
-			extends: [
-				"eslint:recommended",
-				"plugin:@typescript-eslint/recommended",
-				"plugin:jest/recommended",
-				"prettier",
-			],
-			plugins: ["@typescript-eslint", "jest"],
+			extends: ["eslint:recommended", "plugin:@typescript-eslint/recommended", "prettier"],
+			plugins: ["@typescript-eslint"],
 			env: {
 				es2022: true,
 				node: true,
@@ -46,6 +40,36 @@ module.exports = {
 			rules: {
 				"no-empty-function": "off",
 				"@typescript-eslint/no-empty-function": "off",
+				"@typescript-eslint/no-unsafe-call": "off",
+				"@typescript-eslint/no-unsafe-argument": "off",
+			},
+		},
+		{
+			files: ["*.unit.test.ts"],
+			parser: "@typescript-eslint/parser",
+			parserOptions: {
+				project: "./tsconfig.json",
+				tsconfigRootDir: __dirname,
+				sourceType: "module",
+				ecmaVersion: 13,
+				extraFileExtensions: [".svelte"],
+			},
+			extends: [
+				"eslint:recommended",
+				"plugin:@typescript-eslint/recommended",
+				"plugin:jest-dom/recommended",
+				"prettier",
+			],
+			plugins: ["@typescript-eslint", "jest-dom"],
+			env: {
+				es2022: true,
+				node: true,
+			},
+			rules: {
+				"no-empty-function": "off",
+				"@typescript-eslint/no-empty-function": "off",
+				"@typescript-eslint/no-unsafe-call": "off",
+				"@typescript-eslint/no-unsafe-argument": "off",
 			},
 		},
 		{
@@ -71,8 +95,8 @@ module.exports = {
 				ecmaVersion: 13,
 				sourceType: "module",
 			},
-			extends: ["eslint:recommended", "plugin:jest/recommended", "prettier"],
-			plugins: ["jest"],
+			extends: ["eslint:recommended", "prettier"],
+			plugins: [],
 			env: {
 				es2022: true,
 				node: true,

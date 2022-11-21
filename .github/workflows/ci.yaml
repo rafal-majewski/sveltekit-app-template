@@ -29,8 +29,8 @@ jobs:
       - name: Run eslint
         run: |
           npm run eslint-check
-  jest-check:
-    name: Jest check
+  vitest-check:
+    name: Vite check
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -38,14 +38,26 @@ jobs:
       - name: Install dependencies
         run: |
           npm ci
-      - name: Run Jest
+      - name: Run Vite
         run: |
-          npm run jest-check
+          npm run vitest-check
       - name: Upload coverage report
         uses: actions/upload-artifact@v3
         with:
           name: coverage_report
           path: coverage_report
+  playwright-check:
+    name: Playwright check
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Install dependencies
+        run: |
+          npm ci
+      - name: Run Playwright
+        run: |
+          npm run playwright-check
   npm-audit-check:
     name: NPM audit check
     runs-on: ubuntu-latest
@@ -69,7 +81,7 @@ jobs:
           npm run build-check
   build:
     name: Build
-    needs: [eslint-check, jest-check, npm-audit-check, build-check]
+    needs: [eslint-check, vitest-check, playwright-check, npm-audit-check, build-check]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
