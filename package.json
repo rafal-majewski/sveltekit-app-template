@@ -1,7 +1,7 @@
 {
-	"name": "nodejs-app-template",
+	"name": "sveltekit-app-template",
 	"version": "0.0.0",
-	"description": "Node.js app template",
+	"description": "SvelteKit app template",
 	"main": "./src/main.ts",
 	"scripts": {
 		"start": "NODE_ENV=production node ./dist/src/main.js",
@@ -18,14 +18,14 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/Rafal-Majewski/nodejs-app-template.git"
+		"url": "git+https://github.com/Rafal-Majewski/sveltekit-app-template.git"
 	},
 	"author": "Rafał Majewski",
 	"license": "CC0-1.0",
 	"bugs": {
-		"url": "https://github.com/Rafal-Majewski/nodejs-app-template/issues"
+		"url": "https://github.com/Rafal-Majewski/sveltekit-app-template/issues"
 	},
-	"homepage": "https://github.com/Rafal-Majewski/nodejs-app-template#readme",
+	"homepage": "https://github.com/Rafal-Majewski/sveltekit-app-template#readme",
 	"devDependencies": {
 		"@types/jest": "^29.2.3",
 		"@types/node": "^18.11.9",
