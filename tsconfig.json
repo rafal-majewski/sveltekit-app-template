@@ -60,5 +60,5 @@
 
 		"lib": ["ES2021", "DOM"]
 	},
-	"include": ["**/*.ts"]
+	"include": ["**/*.ts", "**/*.svelte"]
 }

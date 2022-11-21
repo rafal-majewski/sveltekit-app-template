@@ -55,8 +55,8 @@ jobs:
       - name: Run npm audit
         run: |
           npm run npm-audit-check
-  typescript-check:
-    name: TypeScript check
+  build-check:
+    name: Build check
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -64,24 +64,12 @@ jobs:
       - name: Install dependencies
         run: |
           npm ci
-      - name: Run TypeScript
+      - name: Run build
         run: |
-          npm run typescript-check
-  svelte-check:
-    name: Svelte check
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-      - name: Install dependencies
-        run: |
-          npm ci
-      - name: Run Svelte
-        run: |
-          npm run svelte-check
+          npm run build-check
   build:
     name: Build
-    needs: [eslint-check, jest-check, npm-audit-check, typescript-check, svelte-check]
+    needs: [eslint-check, jest-check, npm-audit-check, build-check]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository

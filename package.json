@@ -15,7 +15,8 @@
 		"eslint-check": "svelte-kit sync && eslint --max-warnings 0 .",
 		"typescript-check": "svelte-kit sync && tsc --noEmit",
 		"npm-audit-check": "npm audit --audit-level=low",
-		"svelte-check": "svelte-kit sync && svelte-check --fail-on-warnings --fail-on-hints"
+		"svelte-check": "svelte-kit sync && svelte-check --fail-on-warnings --fail-on-hints",
+		"build-check": "svelte-kit sync && vite build && svelte-check --fail-on-warnings --fail-on-hints --tsconfig ./tsconfig.json"
 	},
 	"repository": {
 		"type": "git",

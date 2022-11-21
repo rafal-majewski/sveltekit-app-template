@@ -120,20 +120,12 @@ You can later download the coverage report as an artifact named `coverage_report
 npm run npm-audit-check
 ```
 
-### TypeScript check
+### Build check
 
-Check if the `.ts` files are valid TypeScript code.
-
-```bash
-npm run typescript-check
-```
-
-### Svelte check
-
-Check if the `.svelte` files are valid Svelte code.
+Check if the code can be built.
 
 ```bash
-npm run svelte-check
+npm run build-check
 ```
 
 ### Building the application
