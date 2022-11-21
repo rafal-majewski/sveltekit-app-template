@@ -4,11 +4,10 @@
 	export let todos: Todo[];
 </script>
 
-
 <ul class="todos-list">
 	{#each todos as todo}
 		<li class="todos-list__item">
-			<TodoOnTodosList todo={todo} />
+			<TodoOnTodosList {todo} />
 		</li>
 	{/each}
 </ul>

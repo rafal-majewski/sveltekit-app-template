@@ -8,5 +8,10 @@
 	"semi": true,
 	"bracketSpacing": false,
 	"plugins": [],
-	"pluginSearchDirs": ["."]
+	"pluginSearchDirs": ["."],
+
+	"svelteStrictMode": false,
+	"svelteAllowShorthand": true,
+	"bracketSameLine": true,
+	"svelteIndentScriptAndStyle": true
 }
