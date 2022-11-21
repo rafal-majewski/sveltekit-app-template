@@ -15,6 +15,7 @@ module.exports = {
 			plugins: ["@typescript-eslint"],
 			env: {
 				es2022: true,
+				node: true,
 			},
 		},
 		{
@@ -36,33 +37,34 @@ module.exports = {
 			plugins: ["@typescript-eslint", "jest"],
 			env: {
 				es2022: true,
+				node: true,
 			},
 		},
 		{
-			files: ["*.js"],
+			files: ["*.js", "*.cjs", "*.mjs"],
 			parser: "espree",
 			parserOptions: {
 				ecmaVersion: 13,
 				sourceType: "module",
-				extraFileExtensions: [".svelte"],
 			},
 			extends: ["eslint:recommended", "prettier"],
 			env: {
 				es2022: true,
+				node: true,
 			},
 		},
 		{
-			files: ["*.test.js"],
+			files: ["*.test.js", "*.test.cjs", "*.test.mjs"],
 			parser: "espree",
 			parserOptions: {
 				ecmaVersion: 13,
 				sourceType: "module",
-				extraFileExtensions: [".svelte"],
 			},
 			extends: ["eslint:recommended", "plugin:jest/recommended", "prettier"],
 			plugins: ["jest"],
 			env: {
 				es2022: true,
+				node: true,
 			},
 		},
 		{
