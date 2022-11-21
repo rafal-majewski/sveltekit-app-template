@@ -128,6 +128,14 @@ Check if the `.ts` files are valid TypeScript code.
 npm run typescript-check
 ```
 
+### Svelte check
+
+Check if the `.svelte` files are valid Svelte code.
+
+```bash
+npm run svelte-check
+```
+
 ### Building the application
 
 This job requires all the previous formatting-unrelated jobs to pass.

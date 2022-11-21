@@ -14,7 +14,8 @@
 		"eslint-fix": "svelte-kit sync && eslint --fix .",
 		"eslint-check": "svelte-kit sync && eslint --max-warnings 0 .",
 		"typescript-check": "svelte-kit sync && tsc --noEmit",
-		"npm-audit-check": "npm audit --audit-level=low"
+		"npm-audit-check": "npm audit --audit-level=low",
+		"svelte-check": "svelte-kit sync && svelte-check --fail-on-warnings --fail-on-hints"
 	},
 	"repository": {
 		"type": "git",
@@ -40,6 +41,7 @@
 		"npm": "^9.1.2",
 		"prettier": "^2.7.1",
 		"svelte": "^3.53.1",
+		"svelte-check": "^2.9.2",
 		"svelte-preprocess": "^4.10.7",
 		"ts-jest": "^29.0.3",
 		"typescript": "^4.8.4",
