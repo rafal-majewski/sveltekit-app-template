@@ -1,6 +1,10 @@
 import {preview} from "vite";
 import {chromium} from "playwright";
 import {test, expect} from "@playwright/test";
+import * as dotenv from "dotenv";
+import * as path from "path";
+import * as url from "url";
+dotenv.config({path: path.join(url.fileURLToPath(path.dirname(import.meta.url)), ".env.test")});
 
 test.describe("/", () => {
 	test('displays "Hello world"', async () => {

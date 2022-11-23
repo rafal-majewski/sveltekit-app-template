@@ -60,5 +60,14 @@
 
 		"lib": ["ES2021", "DOM"]
 	},
-	"include": ["**/*.ts", "**/*.svelte"]
+	"include": ["./.svelte-kit/ambient.d.ts", "./.svelte-kit/types/**/$types.d.ts", "./**/*"],
+	"exclude": [
+		"./node_modules/**/*",
+		"./.svelte-kit/[!ambient.d.ts]**/*",
+		"./.vscode/**/*",
+		"./dist/**/*",
+		"./coverage_report/**/*",
+		"./.git/**/*",
+		"./build/**/*"
+	]
 }
