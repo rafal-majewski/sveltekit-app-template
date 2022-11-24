@@ -81,7 +81,7 @@ jobs:
           npm run build-check
   build:
     name: Build
-    needs: [eslint-check, vitest-check, playwright-check, npm-audit-check, build-check]
+    needs: [eslint-check, vitest-check, playwright-check, build-check]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
