@@ -38,8 +38,6 @@ This will create a `build` directory with the built application.
 
 ### Run the build application
 
-To run with `NODE_ENV=development`:
-
 ```bash
 npm run preview
 ```
