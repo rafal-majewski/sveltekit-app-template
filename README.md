@@ -60,7 +60,7 @@ Tests can be found in the `test` directory.
 To run the unit tests:
 
 ```bash
-npm run vitest-check
+npm run vitest:check
 ```
 
 This will run the tests and also providing a tabular code coverage report.
@@ -69,13 +69,13 @@ An HTML code coverage report will be also generated in the `coverage_report` dir
 To run the end-to-end tests:
 
 ```bash
-npm run playwright-check
+npm run playwright:check
 ```
 
 ### Run the linter
 
 ```bash
-npm run eslint-check
+npm run eslint:check
 ```
 
 Note: The linter will return a non-zero exit code if there are any linting errors or warnings.
@@ -83,19 +83,19 @@ Note: The linter will return a non-zero exit code if there are any linting error
 You can also try to automatically fix some of the errors and warnings by running:
 
 ```bash
-npm run eslint-fix
+npm run eslint:fix
 ```
 
 ### Run the formatter
 
 ```bash
-npm run prettier-check
+npm run prettier:check
 ```
 
 Formatting errors can be automatically fixed by running:
 
 ```bash
-npm run prettier-fix
+npm run prettier:fix
 ```
 
 ## CI Pipeline
@@ -106,19 +106,19 @@ It consists of the following jobs:
 ### ESLint check
 
 ```bash
-npm run eslint-check
+npm run eslint:check
 ```
 
 ### Prettier check
 
 ```bash
-npm run prettier-check
+npm run prettier:check
 ```
 
 ### Vitest check
 
 ```bash
-npm run vitest-check
+npm run vitest:check
 ```
 
 You can later download the coverage report as an artifact named `coverage_report`.
@@ -126,13 +126,13 @@ You can later download the coverage report as an artifact named `coverage_report
 ### Playwright check
 
 ```bash
-npm run playwright-check
+npm run playwright:check
 ```
 
 ### npm audit check
 
 ```bash
-npm run npm-audit-check
+npm run npm-audit:check
 ```
 
 ### Build check
@@ -140,7 +140,7 @@ npm run npm-audit-check
 Check if the code can be built.
 
 ```bash
-npm run build-check
+npm run build:check
 ```
 
 ### Building the application

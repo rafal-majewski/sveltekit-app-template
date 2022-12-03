@@ -16,7 +16,7 @@ jobs:
           npm ci
       - name: Run prettier
         run: |
-          npm run prettier-check
+          npm run prettier:check
   eslint-check:
     name: ESLint check
     runs-on: ubuntu-latest
@@ -28,7 +28,7 @@ jobs:
           npm ci
       - name: Run eslint
         run: |
-          npm run eslint-check
+          npm run eslint:check
   vitest-check:
     name: Vite check
     runs-on: ubuntu-latest
@@ -40,7 +40,7 @@ jobs:
           npm ci
       - name: Run Vite
         run: |
-          npm run vitest-check
+          npm run vitest:check
       - name: Upload coverage report
         uses: actions/upload-artifact@v3
         with:
@@ -57,7 +57,7 @@ jobs:
           npm ci
       - name: Run Playwright
         run: |
-          npm run playwright-check
+          npm run playwright:check
   npm-audit-check:
     name: NPM audit check
     runs-on: ubuntu-latest
@@ -66,7 +66,7 @@ jobs:
         uses: actions/checkout@v3
       - name: Run npm audit
         run: |
-          npm run npm-audit-check
+          npm run npm-audit:check
   build-check:
     name: Build check
     runs-on: ubuntu-latest
@@ -78,7 +78,7 @@ jobs:
           npm ci
       - name: Run build
         run: |
-          npm run build-check
+          npm run build:check
   build:
     name: Build
     needs: [eslint-check, vitest-check, playwright-check, build-check]
