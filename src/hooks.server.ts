@@ -1,7 +1,10 @@
 import {Handle} from "@sveltejs/kit";
+import {building} from "$app/environment";
 
 // Validate environment variables by importing appConfig
-import "$lib/app-config";
+if (!building) {
+	import("$lib/app-config");
+}
 
 const handle: Handle = async ({event, resolve}) => {
 	const response = await resolve(event, {
