@@ -4,7 +4,6 @@
 	import type {Todo} from "$lib/features/todos";
 	import {appConfig} from "$lib/app-config";
 	const todos: Todo[] = [{content: "My first todo", id: 1, isCompleted: false}];
-	// appConfig.PUBLIC_WELCOME_MESSAGE = "change me";
 </script>
 
 <svelte:head>
