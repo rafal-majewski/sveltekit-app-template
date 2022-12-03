@@ -1,7 +1,0 @@
-node_modules/
-.vscode/
-dist/
-coverage_report/
-.git/
-build/
-.svelte-kit/
