@@ -9,6 +9,7 @@ The following following tools have been configured:
 - [ESLint](https://www.npmjs.com/package/eslint) for linting
 - [Prettier](https://www.npmjs.com/package/prettier) for code formatting
 - [TypeScript](https://www.npmjs.com/package/typescript) for TypeScript support
+- [Sass](https://www.npmjs.com/package/sass) for SASS support
 
 ## Usage
 
