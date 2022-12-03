@@ -52,7 +52,7 @@ Note: This will command will fail if the application has not been built (no `bui
 
 ### Test the application
 
-Tests can be found in the `test` directory.
+The tests can be found in the `test` directory.
 [Vitest](https://www.npmjs.com/package/vitest) is used to run and write the tests.
 
 To run the unit tests:
