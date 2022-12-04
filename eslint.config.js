@@ -6,7 +6,7 @@ import typescriptEslintPlugin from "@typescript-eslint/eslint-plugin";
 import * as typescriptEslintParser from "@typescript-eslint/parser";
 import * as espreeParser from "espree";
 import globals from "globals";
-import eslintPrettierConfig from "eslint-config-prettier";
+import prettierEslintConfig from "eslint-config-prettier";
 
 import svelteEslintPlugin from "eslint-plugin-svelte";
 import svelteEslintParser from "svelte-eslint-parser";
@@ -187,7 +187,7 @@ const eslintConfig = [
 			".svelte-kit/**",
 		],
 	},
-	eslintPrettierConfig,
+	prettierEslintConfig,
 ];
 
 export default eslintConfig;
