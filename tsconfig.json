@@ -44,7 +44,7 @@
 		"allowJs": false,
 		"maxNodeModuleJsDepth": 0,
 		"allowSyntheticDefaultImports": false,
-		"esModuleInterop": false,
+		"esModuleInterop": true,
 		"forceConsistentCasingInFileNames": true,
 		"isolatedModules": true,
 		"noImplicitUseStrict": false,
