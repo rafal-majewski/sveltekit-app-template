@@ -1,4 +1,4 @@
-import EnvValidationError from "./EnvValidationError";
+import EnvValidationError from "./EnvValidationError.js";
 import * as yup from "yup";
 
 const validateEnv = <AnySchema extends yup.AnySchema>(

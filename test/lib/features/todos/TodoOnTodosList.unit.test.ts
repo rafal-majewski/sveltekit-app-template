@@ -4,7 +4,7 @@ import {describe, test, expect} from "vitest";
 
 expect.extend(matchers);
 
-import {TodoOnTodosList} from "../../../../src/lib/features/todos";
+import {TodoOnTodosList} from "../../../../src/lib/features/todos/index.js";
 
 describe("TodoOnTodosList", () => {
 	test("renders", () => {

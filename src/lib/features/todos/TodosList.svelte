@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type Todo from "./Todo";
+	import type Todo from "./Todo.d.js";
 	import TodoOnTodosList from "./TodoOnTodosList.svelte";
 	export let todos: Todo[];
 </script>

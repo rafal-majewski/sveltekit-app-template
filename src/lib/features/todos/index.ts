@@ -1,4 +1,4 @@
-import type Todo from "./Todo";
+import type Todo from "./Todo.d.js";
 import TodoOnTodosList from "./TodoOnTodosList.svelte";
 import TodosList from "./TodosList.svelte";
 
