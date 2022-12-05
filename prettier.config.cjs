@@ -8,8 +8,7 @@ module.exports = {
 	semi: true,
 	bracketSpacing: false,
 	quoteProps: "preserve",
-	plugins: [],
-	pluginSearchDirs: ["."],
+	plugins: ["prettier-plugin-svelte"],
 
 	svelteStrictMode: false,
 	svelteAllowShorthand: true,
