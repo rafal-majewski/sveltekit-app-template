@@ -12,6 +12,6 @@ module.exports = {
 
 	svelteStrictMode: false,
 	svelteAllowShorthand: true,
-	bracketSameLine: true,
+	bracketSameLine: false,
 	svelteIndentScriptAndStyle: true,
 };
