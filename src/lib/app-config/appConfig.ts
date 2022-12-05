@@ -1,8 +1,8 @@
 import {env} from "$env/dynamic/public";
 
+import {cleanEnv} from "envalid";
 import appConfigSchema from "./appConfigSchema.js";
-import validateEnv from "./validateEnv.js";
 
-const appConfig = validateEnv(appConfigSchema, env);
+const appConfig = cleanEnv(env, appConfigSchema);
 
 export default appConfig;

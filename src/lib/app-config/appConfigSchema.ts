@@ -1,8 +1,8 @@
-import * as yup from "yup";
+import {str, num} from "envalid";
 
-const appConfigSchema = yup.object({
-	PUBLIC_WELCOME_MESSAGE: yup.string().required(),
-	PUBLIC_SOME_NUMBER: yup.number().default(42),
-});
+const appConfigSchema = {
+	PUBLIC_WELCOME_MESSAGE: str(), // required
+	PUBLIC_SOME_NUMBER: num({default: 42}), // optional
+};
 
 export default appConfigSchema;
