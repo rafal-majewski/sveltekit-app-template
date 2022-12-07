@@ -33,7 +33,7 @@
 	"devDependencies": {
 		"@playwright/test": "^1.28.0",
 		"@sveltejs/adapter-node": "^1.0.0-next.100",
-		"@sveltejs/kit": "^1.0.0-next.553",
+		"@sveltejs/kit": "^1.0.0-next.572",
 		"@testing-library/svelte": "^3.2.2",
 		"@types/node": "^18.11.11",
 		"@typescript-eslint/eslint-plugin": "^5.45.1",
