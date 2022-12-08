@@ -174,6 +174,7 @@ const eslintConfig = [
 			"svelte/no-shorthand-style-property-overrides": "error",
 			"svelte/no-unknown-style-directive-property": "error",
 			"svelte/no-unused-svelte-ignore": "error",
+			"svelte/system": "error",
 		},
 	},
 	{
