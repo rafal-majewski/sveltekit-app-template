@@ -1,7 +1,7 @@
 node_modules/
+/build/
+/.svelte-kit/
+/dist/
+/coverage/
 .vscode/
-dist/
-coverage_report/
-.git/
-build/
-.svelte-kit/
+/coverage_report/
