@@ -159,7 +159,7 @@ const eslintConfig = [
 			},
 		},
 		plugins: {
-			svelte: svelteEslintPlugin,
+			"svelte": svelteEslintPlugin,
 		},
 		rules: {
 			"svelte/comment-directive": "error",
