@@ -1,6 +1,5 @@
 <script lang="ts">
 	import {TodosList} from "$lib/features/todos/index.js";
-	import favicon from "./favicon.png";
 	import type {Todo} from "$lib/features/todos/index.js";
 	import {appConfig} from "$lib/app-config/index.js";
 	const todos: Todo[] = [{content: "My first todo", id: 1, isCompleted: false}];
@@ -8,7 +7,7 @@
 
 <svelte:head>
 	<title>My App</title>
-	<link rel="icon" href={favicon} type="image/png" />
+	<link rel="icon" href="/favicon.png" type="image/png" />
 </svelte:head>
 
 <div class="landing-page">
