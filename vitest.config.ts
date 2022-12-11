@@ -13,4 +13,10 @@ export default defineConfig({
 			reporter: ["html", "text"],
 		},
 	},
+	resolve: {
+		alias: [
+			{find: /^\$lib$/, replacement: "/src/lib"},
+			{find: /^\$lib\/(.*)$/, replacement: "/src/lib/$1"},
+		],
+	},
 });
