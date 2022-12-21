@@ -30,7 +30,7 @@ jobs:
         run: |
           npm run eslint:check
   vitest-check:
-    name: Vite check
+    name: Vitest check
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -38,7 +38,7 @@ jobs:
       - name: Install dependencies
         run: |
           npm ci
-      - name: Run Vite
+      - name: Run Vitest
         run: |
           npm run vitest:check
       - name: Upload coverage report
