@@ -39,7 +39,7 @@
 		"@typescript-eslint/eslint-plugin": "^5.46.0",
 		"@typescript-eslint/parser": "^5.46.1",
 		"@vitest/coverage-c8": "^0.25.8",
-		"eslint": "^8.26.0",
+		"eslint": "^8.30.0",
 		"eslint-config-prettier": "^8.5.0",
 		"eslint-plugin-svelte": "^2.13.1",
 		"espree": "^9.4.1",
