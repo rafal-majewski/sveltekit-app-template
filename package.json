@@ -34,7 +34,7 @@
 	"devDependencies": {
 		"@playwright/test": "^1.28.0",
 		"@sveltejs/adapter-node": "^1.0.0-next.100",
-		"@sveltejs/kit": "^1.0.0-next.572",
+		"@sveltejs/kit": "^1.9.2",
 		"@testing-library/svelte": "^3.2.2",
 		"@types/node": "^18.11.17",
 		"@typescript-eslint/eslint-plugin": "^5.48.2",
@@ -55,7 +55,7 @@
 		"svelte-eslint-parser": "^0.22.1",
 		"svelte-preprocess": "^5.0.1",
 		"typescript": "^4.9.4",
-		"vite": "^3.2.5",
+		"vite": "^4.1.4",
 		"vitest": "^0.26.3"
 	},
 	"type": "module",
