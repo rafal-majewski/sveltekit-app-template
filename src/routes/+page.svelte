@@ -1,7 +1,7 @@
 <script lang="ts">
-	import {TodosList} from "$lib/features/todos/index.js";
-	import type {Todo} from "$lib/features/todos/index.js";
-	import {appConfig} from "$lib/app-config/index.js";
+	import TodosList from "$lib/features/todos/TodosList.svelte";
+	import type Todo from "$lib/features/todos/Todo.js";
+	import appConfig from "$lib/app-config/appConfig.js";
 	const todos: Todo[] = [{content: "My first todo", id: 1, isCompleted: false}];
 </script>
 

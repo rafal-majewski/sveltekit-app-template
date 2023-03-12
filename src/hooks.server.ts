@@ -3,7 +3,7 @@ import {building} from "$app/environment";
 
 // Validate environment variables by importing appConfig
 if (!building) {
-	import("$lib/app-config/index.js");
+	import("$lib/app-config/appConfig.js");
 }
 
 const handle: Handle = async ({event, resolve}) => {
