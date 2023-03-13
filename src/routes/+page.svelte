@@ -1,7 +1,8 @@
 <script lang="ts">
 	import TodosList from "$lib/features/todos/TodosList.svelte";
 	import type Todo from "$lib/features/todos/Todo.js";
-	import appConfig from "$lib/app_config/appConfig.js";
+	import type {PageServerData} from "./$types.js";
+	export let data: Readonly<PageServerData>;
 	const todos: Todo[] = [{content: "My first todo", id: 1, isCompleted: false}];
 </script>
 
@@ -12,6 +13,6 @@
 
 <div class="landing-page">
 	<h1>SvelteKit app template</h1>
-	<p>{appConfig.PUBLIC_WELCOME_MESSAGE}</p>
+	<p>{data.welcomeMessage}</p>
 	<TodosList {todos} />
 </div>
