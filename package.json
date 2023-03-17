@@ -19,7 +19,8 @@
 		"formatting:check": "prettier --check .",
 		"formatting:fix": "prettier --write .",
 		"playwright:check": "svelte-kit sync && vite build && playwright test --pass-with-no-tests '.+\\.e2e\\.test\\.[ts|js|cjs|mjs]'",
-		"vitest:check": "svelte-kit sync && vitest run --passWithNoTests --coverage"
+		"vitest:check": "svelte-kit sync && vitest run --passWithNoTests --coverage",
+		"release": "release-it"
 	},
 	"repository": {
 		"type": "git",
@@ -49,6 +50,7 @@
 		"playwright": "^1.28.0",
 		"prettier": "^2.8.1",
 		"prettier-plugin-svelte": "^2.9.0",
+		"release-it": "^15.9.0",
 		"sass": "^1.59.3",
 		"svelte": "^3.56.0",
 		"svelte-check": "^3.0.1",
