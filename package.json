@@ -34,6 +34,7 @@
 	},
 	"homepage": "https://github.com/Rafal-Majewski/sveltekit-app-template#readme",
 	"devDependencies": {
+		"@j-ulrich/release-it-regex-bumper": "^4.1.1",
 		"@playwright/test": "^1.28.0",
 		"@sveltejs/adapter-node": "^1.2.0",
 		"@sveltejs/kit": "^1.12.0",
