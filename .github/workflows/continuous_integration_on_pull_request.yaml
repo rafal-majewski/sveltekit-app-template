@@ -192,11 +192,11 @@ jobs:
       - name: Remember Helm chart version
         id: remember_helm_chart_version
         run: |
-          echo "helm_chart_version=$(grep 'version:' ./helm/Chart.yaml | awk '{print $2}')" >> $GITHUB_OUTPUT
+          echo "helm_chart_version=$(grep '^version:' ./helm/Chart.yaml | awk '{print $2}')" >> $GITHUB_OUTPUT
       - name: Remember Helm chart name
         id: remember_helm_chart_name
         run: |
-          echo "helm_chart_name=$(grep 'name:' ./helm/Chart.yaml | awk '{print $2}')" >> $GITHUB_OUTPUT
+          echo "helm_chart_name=$(grep '^name:' ./helm/Chart.yaml | awk '{print $2}')" >> $GITHUB_OUTPUT
       - name: Setup Helm
         uses: azure/setup-helm@v3
         with:
