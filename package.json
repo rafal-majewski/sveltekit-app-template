@@ -47,7 +47,7 @@
 		"@vitest/coverage-c8": "^0.28.5",
 		"eslint": "^8.36.0",
 		"eslint-config-prettier": "^8.5.0",
-		"eslint-plugin-svelte": "^2.21.0",
+		"eslint-plugin-svelte": "^2.22.0",
 		"espree": "^9.5.0",
 		"globals": "^13.20.0",
 		"jsdom": "^21.1.1",
