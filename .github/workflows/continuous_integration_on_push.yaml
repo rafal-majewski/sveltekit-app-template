@@ -185,9 +185,6 @@ jobs:
         uses: azure/setup-helm@v3
         with:
           version: ${{ env.SETUP_HELM_HELM_VERSION }}
-      - name: Build Helm chart dependencies
-        run: |
-          helm dependency build helm/
       - name: Run Helm package
         run: |
           npm run helm-package
