@@ -39,7 +39,7 @@
 		"@j-ulrich/release-it-regex-bumper": "^4.1.1",
 		"@playwright/test": "^1.28.0",
 		"@sveltejs/adapter-node": "^1.2.3",
-		"@sveltejs/kit": "^1.12.0",
+		"@sveltejs/kit": "^1.15.5",
 		"@testing-library/svelte": "^3.2.2",
 		"@types/node": "^18.15.11",
 		"@typescript-eslint/eslint-plugin": "^5.57.1",
