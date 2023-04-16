@@ -1,6 +1,6 @@
 {
 	"name": "sveltekit-app-template",
-	"version": "1.6.3",
+	"version": "1.6.4",
 	"private": true,
 	"description": "SvelteKit app template",
 	"scripts": {
