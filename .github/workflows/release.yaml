@@ -47,8 +47,8 @@ jobs:
     outputs:
       release_version: ${{ steps.remember_release_version.outputs.release_version }}
 
-  publish_to_docker_hub:
-    name: Publish to Docker Hub
+  build:
+    name: Build
     needs: [release]
     runs-on: ubuntu-latest
     steps:
@@ -78,6 +78,39 @@ jobs:
       - name: Build
         run: |
           npm run build
+      - name: Upload dist
+        uses: actions/upload-artifact@v3
+        with:
+          name: dist
+          path: dist
+    outputs:
+      release_version: ${{ needs.release.outputs.release_version }}
+
+  publish_to_docker_hub:
+    name: Publish to Docker Hub
+    needs: [build]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download release
+        uses: robinraju/release-downloader@v1.7
+        with:
+          tag: ${{ needs.build.outputs.release_version }}
+          tarBall: true
+      - name: Unpack release
+        run: tar -xzf ./${{github.event.repository.name}}-${{ needs.build.outputs.release_version }}.tar.gz
+      - name: Remove tarball
+        run: rm ./${{github.event.repository.name}}-${{ needs.build.outputs.release_version }}.tar.gz
+      - name: Move the files to the current directory
+        run: |
+          shopt -s dotglob
+          mv ./${{github.event.repository.owner.login}}-${{github.event.repository.name}}-*/* ./
+          shopt -u dotglob
+          rm -rf ./${{github.event.repository.owner.login}}-${{github.event.repository.name}}-*/
+      - name: Download dist
+        uses: actions/download-artifact@v3
+        with:
+          name: dist
+          path: dist
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
       - name: Login to Docker Hub
@@ -93,18 +126,18 @@ jobs:
           tags: ${{secrets.DOCKER_HUB_USERNAME}}/${{github.event.repository.name}}:${{ needs.release.outputs.release_version }}
   helm_package:
     name: Helm package
-    needs: [release]
+    needs: [build]
     runs-on: ubuntu-latest
     steps:
       - name: Download release
         uses: robinraju/release-downloader@v1.7
         with:
-          tag: ${{ needs.release.outputs.release_version }}
+          tag: ${{ needs.build.outputs.release_version }}
           tarBall: true
       - name: Unpack release
-        run: tar -xzf ./${{github.event.repository.name}}-${{ needs.release.outputs.release_version }}.tar.gz
+        run: tar -xzf ./${{github.event.repository.name}}-${{ needs.build.outputs.release_version }}.tar.gz
       - name: Remove tarball
-        run: rm ./${{github.event.repository.name}}-${{ needs.release.outputs.release_version }}.tar.gz
+        run: rm ./${{github.event.repository.name}}-${{ needs.build.outputs.release_version }}.tar.gz
       - name: Move the files to the current directory
         run: |
           shopt -s dotglob
