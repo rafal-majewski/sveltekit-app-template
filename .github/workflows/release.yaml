@@ -123,7 +123,7 @@ jobs:
         with:
           context: .
           push: true
-          tags: ${{secrets.DOCKER_HUB_USERNAME}}/${{github.event.repository.name}}:${{ needs.release.outputs.release_version }}
+          tags: ${{secrets.DOCKER_HUB_USERNAME}}/${{github.event.repository.name}}:${{ needs.build.outputs.release_version }}
   helm_package:
     name: Helm package
     needs: [build]
