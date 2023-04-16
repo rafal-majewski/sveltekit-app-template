@@ -157,9 +157,6 @@ jobs:
         id: remember_helm_chart_name
         run: |
           echo "helm_chart_name=$(grep '^name:' ./helm/Chart.yaml | awk '{print $2}')" >> $GITHUB_OUTPUT
-      - name: Add Bitnami Helm repository
-        run: |
-          helm repo add bitnami https://charts.bitnami.com/bitnami
       - name: Run Helm package
         run: |
           npm run helm-package
