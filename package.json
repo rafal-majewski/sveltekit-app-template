@@ -21,7 +21,7 @@
 		"playwright:check": "svelte-kit sync && vite build && playwright test --pass-with-no-tests '.+\\.e2e\\.test\\.[ts|js|cjs|mjs]'",
 		"vitest:check": "svelte-kit sync && vitest run --passWithNoTests --coverage",
 		"release": "release-it",
-		"hadolint:check": "hadolint --failure-threshold=info Dockerfile",
+		"hadolint:check": "hadolint Dockerfile",
 		"helm-lint:check": "helm lint helm",
 		"helm-package": "helm dependency build helm && helm package helm"
 	},
