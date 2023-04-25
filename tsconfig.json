@@ -54,7 +54,8 @@
 		"moduleDetection": "auto",
 		"target": "es2022",
 		"useDefineForClassFields": true,
-		"skipLibCheck": true
+		"skipLibCheck": true,
+		"allowUnusedLabels": false
 	},
 	"include": ["./.svelte-kit/ambient.d.ts", "./.svelte-kit/types/**/$types.d.ts", "./**/*"],
 	"exclude": [
