@@ -8,7 +8,7 @@ dotenv.config({path: path.join(url.fileURLToPath(path.dirname(import.meta.url)),
 test.describe("/", () => {
 	test('displays "Hello world"', async ({page}) => {
 		const server = await preview();
-		if (!server.resolvedUrls.local[0]) {
+		if (server.resolvedUrls.local[0] === undefined) {
 			throw new Error("No local URL");
 		}
 		await page.goto(server.resolvedUrls.local[0]);
@@ -17,7 +17,7 @@ test.describe("/", () => {
 	});
 	test("displays my first todo", async ({page}) => {
 		const server = await preview();
-		if (!server.resolvedUrls.local[0]) {
+		if (server.resolvedUrls.local[0] === undefined) {
 			throw new Error("No local URL");
 		}
 		await page.goto(server.resolvedUrls.local[0]);

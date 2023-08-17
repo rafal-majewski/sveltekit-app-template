@@ -1,4 +1,4 @@
-<script lang="ts">
+<script lang="ts" strictEvents>
 	import TodosList from "$lib/features/todos/TodosList.svelte";
 	import type {Todo} from "$lib/features/todos/Todo.js";
 	import type {DeepReadonly} from "ts-essentials";
