@@ -157,9 +157,12 @@ jobs:
         uses: azure/setup-helm@v3
         with:
           version: ${{ env.SETUP_HELM_HELM_VERSION }}
-      - name: Run Helm package
+      - name: Build Helm package dependencies
         run: |
-          npm run helm-package
+          helm dependency build helm
+      - name: Build Helm package
+        run: |
+          helm package helm
       - name: Upload Helm package
         uses: actions/upload-artifact@v3
         with:
