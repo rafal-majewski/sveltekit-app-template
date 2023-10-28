@@ -10,7 +10,7 @@ import globals from "globals";
 import svelteEslintPlugin from "eslint-plugin-svelte";
 import svelteEslintParser from "svelte-eslint-parser";
 
-const eslintConfig = [
+export default [
 	{
 		files: ["**/*.mjs", "**/*.js", "**/*.ts", "**/*.svelte"],
 		languageOptions: {
@@ -192,5 +192,3 @@ const eslintConfig = [
 		],
 	},
 ];
-
-export default eslintConfig;
