@@ -22,7 +22,6 @@
 		"vitest:check": "svelte-kit sync && vitest run --passWithNoTests --coverage",
 		"release": "release-it",
 		"hadolint:check": "hadolint Dockerfile",
-		"helm-lint:check": "helm lint helm",
 		"helm-package": "helm dependency build helm && helm package helm"
 	},
 	"repository": {
