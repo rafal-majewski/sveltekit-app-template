@@ -131,22 +131,13 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: ${{ env.SETUP_NODE_NODE_VERSION }}
-          cache: "npm"
-      - name: Install dependencies
+      - name: Build the Docker image
         run: |
-          npm ci
-      - name: Build
-        run: |
-          npm run build
-      - name: Upload build
-        uses: actions/upload-artifact@v3
+          docker build --tag=${{ github.repository }}:${{ github.sha }} --file=Dockerfile --build-arg="NODE_VERSION=${{ env.SETUP_NODE_NODE_VERSION }}" .
+      - name: Upload Docker image as an artifact
+        uses: ishworkh/container-image-artifact-upload@v1.0.0
         with:
-          name: build
-          path: build
+          image: ${{ github.repository }}:${{ github.sha }}
   helm_package:
     name: Helm package
     needs: [helm_lint_check]
