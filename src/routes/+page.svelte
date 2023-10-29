@@ -1,9 +1,10 @@
 <script lang="ts">
 	import TodosList from "$lib/features/todos/TodosList.svelte";
 	import type {Todo} from "$lib/features/todos/Todo.js";
+	import type {DeepReadonly} from "ts-essentials";
 	import type {PageServerData} from "./$types.js";
-	export let data: Readonly<PageServerData>;
-	const todos: Todo[] = [{content: "My first todo", id: 1, isCompleted: false}];
+	export let data: DeepReadonly<PageServerData>;
+	const todos: DeepReadonly<Todo[]> = [{content: "My first todo", id: 1, isCompleted: false}];
 </script>
 
 <svelte:head>
