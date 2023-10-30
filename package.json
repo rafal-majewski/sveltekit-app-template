@@ -4,7 +4,6 @@
 	"private": true,
 	"description": "SvelteKit app template",
 	"scripts": {
-		"start": "node ./build/index.js",
 		"build": "svelte-kit sync && vite build",
 		"preview": "svelte-kit sync && vite preview",
 		"dev": "svelte-kit sync && vite dev",
@@ -13,16 +12,13 @@
 		"eslint:fix": "svelte-kit sync && eslint --fix .",
 		"eslint:check": "svelte-kit sync && eslint --max-warnings 0 .",
 		"typescript:check": "svelte-kit sync && tsc --noEmit",
-		"npm-audit:check": "npm audit --audit-level=low",
 		"svelte:check": "svelte-kit sync && svelte-check --fail-on-warnings",
 		"build:check": "svelte-kit sync && svelte-check --fail-on-warnings --tsconfig ./tsconfig.json",
 		"formatting:check": "prettier --check .",
 		"formatting:fix": "prettier --write .",
 		"playwright:check": "svelte-kit sync && vite build && playwright test --pass-with-no-tests '.+\\.e2e\\.test\\.[ts|js|cjs|mjs]'",
 		"vitest:check": "svelte-kit sync && vitest run --passWithNoTests --coverage",
-		"release": "release-it",
-		"hadolint:check": "hadolint Dockerfile",
-		"helm-package": "helm dependency build helm && helm package helm"
+		"release": "release-it"
 	},
 	"repository": {
 		"type": "git",

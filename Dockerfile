@@ -25,4 +25,4 @@ USER appuser
 
 EXPOSE 3000
 
-ENTRYPOINT [ "npm", "run", "start" ]
+ENTRYPOINT [ "node", "./build/index.js" ]

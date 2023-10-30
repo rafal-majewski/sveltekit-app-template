@@ -127,9 +127,12 @@ jobs:
         id: remember_helm_chart_name
         run: |
           echo "helm_chart_name=$(grep '^name:' ./helm/Chart.yaml | awk '{print $2}')" >> $GITHUB_OUTPUT
-      - name: Run Helm package
+      - name: Build Helm package dependencies
         run: |
-          npm run helm-package
+          helm dependency build helm
+      - name: Build Helm package
+        run: |
+          helm package helm
       - name: Upload Helm package
         uses: actions/upload-artifact@v3
         with:
