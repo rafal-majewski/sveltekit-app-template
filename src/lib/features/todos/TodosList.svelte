@@ -1,4 +1,4 @@
-<script lang="ts">
+<script lang="ts" strictEvents>
 	import type {Todo} from "./Todo.js";
 	import type {DeepReadonly} from "ts-essentials";
 	import TodoOnTodosList from "./TodoOnTodosList.svelte";

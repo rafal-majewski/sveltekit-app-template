@@ -2,7 +2,7 @@ import {defineConfig} from "vitest/config";
 import {svelte} from "@sveltejs/vite-plugin-svelte";
 
 export default defineConfig({
-	plugins: [svelte({hot: !process.env["VITEST"]})],
+	plugins: [svelte({hot: process.env["VITEST"] === undefined})],
 	test: {
 		include: ["**/*.unit.test.ts", "**/*.unit.test.js", "**/*.unit.test.cjs", "**/*.unit.test.mjs"],
 
@@ -15,8 +15,8 @@ export default defineConfig({
 	},
 	resolve: {
 		alias: [
-			{find: /^\$lib$/, replacement: "/src/lib"},
-			{find: /^\$lib\/(.*)$/, replacement: "/src/lib/$1"},
+			{find: /^\$lib$/u, replacement: "/src/lib"},
+			{find: /^\$lib\/(?<pathInLib>.*)$/u, replacement: "/src/lib/$1"},
 		],
 	},
 });

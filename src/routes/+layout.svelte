@@ -2,19 +2,7 @@
 	<slot />
 </div>
 
-<style lang="scss" global>
-	* {
-		box-sizing: border-box;
-	}
-	body {
-		margin: 0;
-	}
-	html {
-		min-height: 100%;
-	}
-	html,
-	body,
-	.sveltekit-body,
+<style lang="scss">
 	.svelte-app-root {
 		display: grid;
 	}
