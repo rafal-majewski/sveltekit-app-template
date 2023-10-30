@@ -9,7 +9,7 @@ export default defineConfig({
 		environment: "jsdom",
 		coverage: {
 			provider: "c8",
-			reportsDirectory: "coverage_report",
+			reportsDirectory: "coverage-report",
 			reporter: ["html", "text"],
 		},
 	},

@@ -85,8 +85,8 @@ jobs:
       - name: Upload coverage report
         uses: actions/upload-artifact@v3
         with:
-          name: coverage_report
-          path: coverage_report
+          name: coverage-report
+          path: coverage-report
   build_check:
     name: Build check
     runs-on: ubuntu-latest
