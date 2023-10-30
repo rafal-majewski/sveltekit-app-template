@@ -13,7 +13,6 @@
 		"eslint:fix": "svelte-kit sync && eslint --fix .",
 		"eslint:check": "svelte-kit sync && eslint --max-warnings 0 .",
 		"typescript:check": "svelte-kit sync && tsc --noEmit",
-		"npm-audit:check": "npm audit --audit-level=low",
 		"svelte:check": "svelte-kit sync && svelte-check --fail-on-warnings",
 		"build:check": "svelte-kit sync && svelte-check --fail-on-warnings --tsconfig ./tsconfig.json",
 		"formatting:check": "prettier --check .",
