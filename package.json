@@ -4,7 +4,6 @@
 	"private": true,
 	"description": "SvelteKit app template",
 	"scripts": {
-		"start": "node ./build/index.js",
 		"build": "svelte-kit sync && vite build",
 		"preview": "svelte-kit sync && vite preview",
 		"dev": "svelte-kit sync && vite dev",
