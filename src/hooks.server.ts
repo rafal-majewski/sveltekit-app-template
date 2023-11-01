@@ -1,5 +1,5 @@
-import type {Handle} from "@sveltejs/kit";
 import * as appEnvironment from "$app/environment";
+import type {Handle} from "@sveltejs/kit";
 
 // Validate environment variables by importing appConfig
 if (!appEnvironment.building) {

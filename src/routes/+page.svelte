@@ -1,9 +1,11 @@
 <script lang="ts" strictEvents>
-	import TodosList from "$lib/features/todos/TodosList.svelte";
 	import type {Todo} from "$lib/features/todos/Todo.js";
-	import type {DeepReadonly} from "ts-essentials";
+	import TodosList from "$lib/features/todos/TodosList.svelte";
 	import type {PageServerData} from "./$types.js";
+	import type {DeepReadonly} from "ts-essentials";
+
 	export let data: DeepReadonly<PageServerData>;
+
 	const todos: DeepReadonly<Todo[]> = [{content: "My first todo", id: 1, isCompleted: false}];
 </script>
 
