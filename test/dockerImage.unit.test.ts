@@ -1,5 +1,5 @@
-import {describe, expect, test} from "vitest";
 import * as testcontainers from "testcontainers";
+import {describe, expect, test} from "vitest";
 
 const dockerImageNodeVersion = "19.7";
 

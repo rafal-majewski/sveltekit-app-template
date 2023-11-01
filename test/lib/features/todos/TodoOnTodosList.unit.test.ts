@@ -1,7 +1,6 @@
+import TodoOnTodosList from "$lib/features/todos/TodoOnTodosList.svelte";
 import {render, screen} from "@testing-library/svelte";
 import {describe, test, expect} from "vitest";
-
-import TodoOnTodosList from "$lib/features/todos/TodoOnTodosList.svelte";
 
 describe("TodoOnTodosList", () => {
 	test("renders", () => {

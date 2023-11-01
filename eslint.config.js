@@ -4,10 +4,10 @@
 
 import typescriptEslintPlugin from "@typescript-eslint/eslint-plugin";
 import * as typescriptEslintParser from "@typescript-eslint/parser";
+import importEslintPlugin from "eslint-plugin-import";
+import svelteEslintPlugin from "eslint-plugin-svelte";
 import * as espreeParser from "espree";
 import globals from "globals";
-
-import svelteEslintPlugin from "eslint-plugin-svelte";
 import svelteEslintParser from "svelte-eslint-parser";
 
 export default [
@@ -39,6 +39,9 @@ export default [
 				...globals.es2021,
 				...globals.browser,
 			},
+		},
+		plugins: {
+			"import": importEslintPlugin,
 		},
 		rules: {
 			// Possible Problems
@@ -307,6 +310,70 @@ export default [
 			"symbol-description": "error",
 			"vars-on-top": "error",
 			"yoda": ["warn", "never", {exceptRange: false, onlyEquality: false}],
+
+			// eslint-plugin-import
+
+			"import/export": "error",
+			"import/no-deprecated": "off", // Doesn't work correctly with TypeScript.
+			"import/no-empty-named-blocks": "error",
+			"import/no-extraneous-dependencies": "off", // Doesn't work correctly with SvelteKit.
+			"import/no-mutable-exports": "error",
+			"import/no-named-as-default": "off", // Doesn't work correctly with TypeScript.
+			"import/no-named-as-default-member": "off", // Doesn't work correctly with TypeScript.
+			"import/no-unused-modules": "off", // Doesn't work correctly.
+			"import/no-amd": "error",
+			"import/no-commonjs": "off", // The Prettier config uses CommonJS.
+			"import/no-import-module-exports": ["error", {exceptions: []}],
+			"import/no-nodejs-modules": "off",
+			"import/unambiguous": "error",
+			"import/default": "off", // Doesn't work correctly with TypeScript.
+			"import/named": "error",
+			"import/namespace": "off", // Doesn't work correctly with TypeScript.
+			"import/no-absolute-path": ["error", {esmodule: true, commonjs: true, amd: true}],
+			"import/no-cycle": [
+				"error",
+				{maxDepth: Infinity, ignoreExternal: false, allowUnsafeDynamicCyclicDependency: false},
+			],
+			"import/no-dynamic-require": "error",
+			"import/no-internal-modules": "off",
+			"import/no-relative-packages": "off",
+			"import/no-relative-parent-imports": "off",
+			"import/no-restricted-paths": "off",
+			"import/no-self-import": "error",
+			"import/no-unresolved": "off",
+			"import/no-useless-path-segments": ["warn", {noUselessIndex: true, commonjs: true}],
+			"import/no-webpack-loader-syntax": "error",
+			"import/consistent-type-specifier-style": "off", // TypeScript will handle this.
+			"import/dynamic-import-chunkname": "off",
+			"import/exports-last": "warn",
+			"import/extensions": "off", // TypeScript will handle this.
+			"import/first": "warn",
+			"import/group-exports": "off",
+			"import/max-dependencies": "off",
+			"import/newline-after-import": [
+				"warn",
+				{count: 1, exactCount: false, considerComments: true},
+			],
+			"import/no-anonymous-default-export": "off",
+			"import/no-default-export": "warn",
+			"import/no-duplicates": ["warn", {considerQueryString: false, "prefer-inline": true}],
+			"import/no-named-default": "error",
+			"import/no-named-export": "off",
+			"import/no-namespace": "off",
+			"import/no-unassigned-import": ["error", {allow: []}],
+			"import/order": [
+				"warn",
+				{
+					groups: [],
+					pathGroups: [],
+					distinctGroup: false,
+					pathGroupsExcludedImportTypes: [],
+					"newlines-between": "never",
+					alphabetize: {order: "asc", orderImportKind: "asc", caseInsensitive: false},
+					warnOnUnassignedImports: true,
+				},
+			],
+			"import/prefer-default-export": "off",
 		},
 	},
 	{
@@ -654,6 +721,10 @@ export default [
 			"@typescript-eslint/space-before-function-paren": "off",
 			"space-infix-ops": "off",
 			"@typescript-eslint/space-infix-ops": "off",
+
+			// eslint-plugin-import
+
+			"import/named": "off", // TypeScript has this functionality.
 		},
 		plugins: {
 			"@typescript-eslint": typescriptEslintPlugin,
@@ -803,6 +874,10 @@ export default [
 					varsIgnorePattern: "^\\$\\$Slots$",
 				},
 			],
+
+			// eslint-plugin-import
+
+			"import/no-mutable-exports": "off", // Svelte props support.
 		},
 	},
 	{

@@ -1,8 +1,9 @@
-import {preview} from "vite";
 import {test, expect} from "@playwright/test";
 import * as dotenv from "dotenv";
 import * as path from "path";
 import * as url from "url";
+import {preview} from "vite";
+
 dotenv.config({path: path.join(url.fileURLToPath(path.dirname(import.meta.url)), ".env.test")});
 
 test.describe("/", () => {
