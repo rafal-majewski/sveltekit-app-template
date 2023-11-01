@@ -367,7 +367,7 @@ export default [
 			],
 			"@typescript-eslint/no-invalid-void-type": [
 				"error",
-				{allowAsThisParameter: false, allowInGenericTypeArguments: false},
+				{allowAsThisParameter: false, allowInGenericTypeArguments: true},
 			],
 			"@typescript-eslint/no-meaningless-void-operator": ["error", {checkNever: true}],
 			"@typescript-eslint/no-misused-new": "error",
