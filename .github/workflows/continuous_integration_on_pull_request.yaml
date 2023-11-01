@@ -134,10 +134,6 @@ jobs:
       - name: Build the Docker image
         run: |
           docker build --tag=${{ github.repository }}:${{ github.sha }} --file=Dockerfile --build-arg="NODE_VERSION=${{ env.SETUP_NODE_NODE_VERSION }}" .
-      - name: Upload Docker image as an artifact
-        uses: ishworkh/container-image-artifact-upload@v1.0.0
-        with:
-          image: ${{ github.repository }}:${{ github.sha }}
   helm_package:
     name: Helm package
     needs: [helm_lint_check]
