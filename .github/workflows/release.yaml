@@ -48,7 +48,7 @@ jobs:
       release_version: ${{ steps.remember_release_version.outputs.release_version }}
 
   build_docker_image:
-    name: Build Docker image
+    name: Build a Docker image
     needs: [release]
     runs-on: ubuntu-latest
     steps:
@@ -67,7 +67,7 @@ jobs:
           mv ./${{github.event.repository.owner.login}}-${{github.event.repository.name}}-*/* ./
           shopt -u dotglob
           rm -rf ./${{github.event.repository.owner.login}}-${{github.event.repository.name}}-*/
-      - name: Build the Docker image
+      - name: Build a Docker image
         run: |
           docker build --tag=${{vars.DOCKER_REGISTRY_HOST}}/${{vars.DOCKER_REGISTRY_REPOSITORY_NAME}}:${{ needs.release.outputs.release_version }} --file=Dockerfile --build-arg="NODE_VERSION=${{ env.SETUP_NODE_NODE_VERSION }}" .
       - name: Upload the Docker image as an artifact
