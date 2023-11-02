@@ -456,7 +456,10 @@ export default [
 			],
 			"@typescript-eslint/no-unnecessary-condition": [
 				"error",
-				{allowConstantLoopConditions: false},
+				{
+					allowConstantLoopConditions: false,
+					allowRuleToRunWithoutStrictNullChecksIKnowWhatIAmDoing: false,
+				},
 			],
 			"@typescript-eslint/no-unnecessary-qualifier": "error",
 			"@typescript-eslint/no-unnecessary-type-arguments": "error",
