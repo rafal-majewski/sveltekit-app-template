@@ -50,13 +50,7 @@ This will create a `build` directory with the built application.
 ### Run the build application
 
 ```bash
-npm run preview
-```
-
-To run with `NODE_ENV=production`:
-
-```bash
-npm run start
+node ./build/index.js
 ```
 
 Note: This will command will fail if the application has not been built (no `build` directory)!
