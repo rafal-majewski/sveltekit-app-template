@@ -4,12 +4,22 @@ This is a template for a SvelteKit TypeScript project.
 
 The following following tools have been configured:
 
+- [npm](https://www.npmjs.com/) for package management and Node.js scripts
+- [Sass](https://www.npmjs.com/package/sass) for SASS support
+- [TypeScript](https://www.npmjs.com/package/typescript) for TypeScript support
+- [ESLint](https://www.npmjs.com/package/eslint) for linting
+  - [typescript-eslint](https://www.npmjs.com/package/@typescript-eslint/eslint-plugin) for linting TypeScript
+  - [eslint-plugin-import](https://www.npmjs.com/package/eslint-plugin-import) for linting import/export
+  - [eslint-plugin-svelte](https://www.npmjs.com/package/eslint-plugin-svelte) for linting Svelte
+- [Prettier](https://www.npmjs.com/package/prettier) for code formatting
+  - [prettier-plugin-svelte](https://www.npmjs.com/package/prettier-plugin-svelte) for formatting Svelte
 - [Vitest](https://www.npmjs.com/package/vitest) for unit testing
 - [Playwright](https://www.npmjs.com/package/playwright) for end-to-end testing
-- [ESLint](https://www.npmjs.com/package/eslint) for linting
-- [Prettier](https://www.npmjs.com/package/prettier) for code formatting
-- [TypeScript](https://www.npmjs.com/package/typescript) for TypeScript support
-- [Sass](https://www.npmjs.com/package/sass) for SASS support
+- [GitHub Actions](https://docs.github.com/en/actions) for CI/CD
+- [Docker](https://www.docker.com/) for containerization
+- [Testcontainers](https://www.npmjs.com/package/testcontainers) for testing with Docker containers
+- [Hadolint](https://github.com/hadolint/hadolint) for linting Dockerfiles
+- [Helm](https://helm.sh) for Kubernetes deployment
 
 ## Usage
 
@@ -40,13 +50,7 @@ This will create a `build` directory with the built application.
 ### Run the build application
 
 ```bash
-npm run preview
-```
-
-To run with `NODE_ENV=production`:
-
-```bash
-npm run start
+node ./build/index.js
 ```
 
 Note: This will command will fail if the application has not been built (no `build` directory)!
@@ -97,57 +101,17 @@ Formatting errors can be automatically fixed by running:
 npm run prettier:fix
 ```
 
-## CI Pipeline
+## GitHub Actions
 
-The CI pipeline is configured in the `.github/workflows/ci.yml` file.
-It consists of the following jobs:
+### Continuous integration
 
-### ESLint check
+There are two CI pipelines configured in the `.github/workflows` directory:
 
-```bash
-npm run eslint:check
-```
+- [Continuous integration on push](.github/workflows/continuous_integration_on_push.yml): This pipeline will check the integrity of the code by running formatting, linting, and basic testing.
+- [Continuous integration on pull request](.github/workflows/continuous_integration_on_pull_request.yml): This pipeline will check the integrity of the code by running formatting, linting, and testing, including end-to-end testing.
 
-### Prettier check
+### Continuous delivery
 
-```bash
-npm run prettier:check
-```
+There is one CD pipeline configured in the `.github/workflows` directory:
 
-### Vitest check
-
-```bash
-npm run vitest:check
-```
-
-You can later download the coverage report as an artifact named `coverage-report`.
-
-### Playwright check
-
-```bash
-npm run playwright:check
-```
-
-### npm audit check
-
-```bash
-npm run npm-audit:check
-```
-
-### Build check
-
-Check if the code can be built.
-
-```bash
-npm run build:check
-```
-
-### Building the application
-
-This job requires all the previous formatting-unrelated jobs to pass.
-
-```bash
-npm run build
-```
-
-You can later download the built application as an artifact named `build`.
+- [Release](.github/workflows/release.yml): This pipeline will create a GitHub release, build a Docker image, and push it to a Docker registry.
