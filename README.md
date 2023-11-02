@@ -4,12 +4,22 @@ This is a template for a SvelteKit TypeScript project.
 
 The following following tools have been configured:
 
+- [npm](https://www.npmjs.com/) for package management and Node.js scripts
+- [Sass](https://www.npmjs.com/package/sass) for SASS support
+- [TypeScript](https://www.npmjs.com/package/typescript) for TypeScript support
+- [ESLint](https://www.npmjs.com/package/eslint) for linting
+  - [typescript-eslint](https://www.npmjs.com/package/@typescript-eslint/eslint-plugin) for linting TypeScript
+  - [eslint-plugin-import](https://www.npmjs.com/package/eslint-plugin-import) for linting import/export
+  - [eslint-plugin-svelte](https://www.npmjs.com/package/eslint-plugin-svelte) for linting Svelte
+- [Prettier](https://www.npmjs.com/package/prettier) for code formatting
+  - [prettier-plugin-svelte](https://www.npmjs.com/package/prettier-plugin-svelte) for formatting Svelte
 - [Vitest](https://www.npmjs.com/package/vitest) for unit testing
 - [Playwright](https://www.npmjs.com/package/playwright) for end-to-end testing
-- [ESLint](https://www.npmjs.com/package/eslint) for linting
-- [Prettier](https://www.npmjs.com/package/prettier) for code formatting
-- [TypeScript](https://www.npmjs.com/package/typescript) for TypeScript support
-- [Sass](https://www.npmjs.com/package/sass) for SASS support
+- [GitHub Actions](https://docs.github.com/en/actions) for CI/CD
+- [Docker](https://www.docker.com/) for containerization
+- [Testcontainers](https://www.npmjs.com/package/testcontainers) for testing with Docker containers
+- [Hadolint](https://github.com/hadolint/hadolint) for linting Dockerfiles
+- [Helm](https://helm.sh) for Kubernetes deployment
 
 ## Usage
 
