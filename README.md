@@ -101,57 +101,17 @@ Formatting errors can be automatically fixed by running:
 npm run prettier:fix
 ```
 
-## CI Pipeline
+## GitHub Actions
 
-The CI pipeline is configured in the `.github/workflows/ci.yml` file.
-It consists of the following jobs:
+### Continuous integration
 
-### ESLint check
+There are two CI pipelines configured in the `.github/workflows` directory:
 
-```bash
-npm run eslint:check
-```
+- [Continuous integration on push](.github/workflows/continuous_integration_on_push.yml): This pipeline will check the integrity of the code by running formatting, linting, and basic testing.
+- [Continuous integration on pull request](.github/workflows/continuous_integration_on_pull_request.yml): This pipeline will check the integrity of the code by running formatting, linting, and testing, including end-to-end testing.
 
-### Prettier check
+### Continuous delivery
 
-```bash
-npm run prettier:check
-```
+There is one CD pipeline configured in the `.github/workflows` directory:
 
-### Vitest check
-
-```bash
-npm run vitest:check
-```
-
-You can later download the coverage report as an artifact named `coverage-report`.
-
-### Playwright check
-
-```bash
-npm run playwright:check
-```
-
-### npm audit check
-
-```bash
-npm run npm-audit:check
-```
-
-### Build check
-
-Check if the code can be built.
-
-```bash
-npm run build:check
-```
-
-### Building the application
-
-This job requires all the previous formatting-unrelated jobs to pass.
-
-```bash
-npm run build
-```
-
-You can later download the built application as an artifact named `build`.
+- [Release](.github/workflows/release.yml): This pipeline will create a GitHub release, build a Docker image, and push it to a Docker registry.
