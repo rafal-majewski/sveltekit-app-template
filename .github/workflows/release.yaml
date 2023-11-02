@@ -79,7 +79,7 @@ jobs:
 
   publish_to_docker_registry:
     name: Publish to Docker registry
-    needs: [build]
+    needs: [build_docker_image]
     runs-on: ubuntu-latest
     steps:
       - name: Download the built Docker image
