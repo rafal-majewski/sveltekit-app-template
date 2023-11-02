@@ -69,11 +69,11 @@ jobs:
           rm -rf ./${{github.event.repository.owner.login}}-${{github.event.repository.name}}-*/
       - name: Build a Docker image
         run: |
-          docker build --tag=${{vars.DOCKER_REGISTRY_HOST}}/${{vars.DOCKER_REGISTRY_REPOSITORY_NAME}}:${{ needs.release.outputs.release_version }} --file=Dockerfile --build-arg="NODE_VERSION=${{ env.SETUP_NODE_NODE_VERSION }}" .
+          docker build --tag=${{vars.DOCKER_REGISTRY_REPOSITORY_NAME}}:${{ needs.release.outputs.release_version }} --file=Dockerfile --build-arg="NODE_VERSION=${{ env.SETUP_NODE_NODE_VERSION }}" .
       - name: Upload the Docker image as an artifact
         uses: ishworkh/container-image-artifact-upload@v1.0.0
         with:
-          image: ${{vars.DOCKER_REGISTRY_HOST}}/${{vars.DOCKER_REGISTRY_REPOSITORY_NAME}}:${{ needs.release.outputs.release_version }}
+          image: ${{vars.DOCKER_REGISTRY_REPOSITORY_NAME}}:${{ needs.release.outputs.release_version }}
     outputs:
       release_version: ${{ needs.release.outputs.release_version }}
 
@@ -85,7 +85,7 @@ jobs:
       - name: Download the built Docker image
         uses: ishworkh/container-image-artifact-download@v1.0.0
         with:
-          image: ${{vars.DOCKER_REGISTRY_HOST}}/${{vars.DOCKER_REGISTRY_REPOSITORY_NAME}}:${{ needs.build.outputs.release_version }}
+          image: ${{vars.DOCKER_REGISTRY_REPOSITORY_NAME}}:${{ needs.build_docker_image.outputs.release_version }}
       - name: Login to Docker registry
         uses: docker/login-action@v3
         with:
@@ -94,7 +94,7 @@ jobs:
           registry: ${{vars.DOCKER_REGISTRY_HOST}}
       - name: Push the Docker image to the registry
         run: |
-          docker push ${{vars.DOCKER_REGISTRY_HOST}}/${{vars.DOCKER_REGISTRY_REPOSITORY_NAME}}:${{ needs.build.outputs.release_version }}
+          docker push ${{vars.DOCKER_REGISTRY_HOST}}/${{vars.DOCKER_REGISTRY_REPOSITORY_NAME}}:${{ needs.build_docker_image.outputs.release_version }}
   helm_package:
     name: Helm package
     needs: [release]
