@@ -122,7 +122,7 @@ export default [
 			"complexity": "off",
 			"consistent-return": "error",
 			"consistent-this": "off",
-			"curly": "off",
+			"curly": ["warn", "all"],
 			"default-case": "off",
 			"default-case-last": "off",
 			"default-param-last": "off",
