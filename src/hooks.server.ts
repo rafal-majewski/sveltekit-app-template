@@ -3,7 +3,7 @@ import type {Handle} from "@sveltejs/kit";
 
 // Validate environment variables by importing appConfig
 if (!appEnvironment.building) {
-	import("$lib/server/app_config/appConfig.js");
+	import("$lib/server/app_config/appConfig.ts");
 }
 
 export const handle: Handle = async ({event, resolve}) => {

@@ -1,5 +1,5 @@
 <script lang="ts" strictEvents>
-	import type {Todo} from "./Todo.js";
+	import type {Todo} from "./Todo.ts";
 	import type {DeepReadonly} from "ts-essentials";
 
 	export let todo: DeepReadonly<Todo>;

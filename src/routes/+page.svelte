@@ -1,7 +1,7 @@
 <script lang="ts" strictEvents>
-	import type {Todo} from "$lib/features/todos/Todo.js";
+	import type {Todo} from "$lib/features/todos/Todo.ts";
 	import LandingPage from "$lib/landing_page/LadingPage.svelte";
-	import type {PageServerData} from "./$types.js";
+	import type {PageServerData} from "./$types.ts";
 	import type {DeepReadonly} from "ts-essentials";
 
 	export let data: DeepReadonly<PageServerData>;
