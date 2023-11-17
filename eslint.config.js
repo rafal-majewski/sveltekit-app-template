@@ -2,13 +2,18 @@
 // https://eslint.org/blog/2022/08/new-config-system-part-1/
 // https://eslint.org/blog/2022/08/new-config-system-part-2/
 
+// @ts-expect-error - Satisfying TypeSript here would actually cause ESLint to load the config incorrectly.
 import typescriptEslintPlugin from "@typescript-eslint/eslint-plugin";
+// @ts-expect-error - Needs Node 16 module resolution, but we can't use that because of SvelteKit.
 import * as typescriptEslintParser from "@typescript-eslint/parser";
+// @ts-expect-error - No types available.
 import importEslintPlugin from "eslint-plugin-import";
-import svelteEslintPlugin from "eslint-plugin-svelte";
+import * as svelteEslintPlugin from "eslint-plugin-svelte";
+// @ts-expect-error - No types available.
 import * as espreeParser from "espree";
+// @ts-expect-error - Satisfying TypeSript here would actually cause ESLint to load the config incorrectly.
 import globals from "globals";
-import svelteEslintParser from "svelte-eslint-parser";
+import * as svelteEslintParser from "svelte-eslint-parser";
 
 export default [
 	{
@@ -356,7 +361,7 @@ export default [
 			"import/max-dependencies": "off",
 			"import/newline-after-import": [
 				"warn",
-				{"count": 1, "exactCount": false, "considerComments": true},
+				{"count": 1, "exactCount": false, "considerComments": false},
 			],
 			"import/no-anonymous-default-export": "off",
 			"import/no-default-export": "warn",
