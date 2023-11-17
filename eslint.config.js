@@ -356,7 +356,7 @@ export default [
 			"import/max-dependencies": "off",
 			"import/newline-after-import": [
 				"warn",
-				{"count": 1, "exactCount": false, "considerComments": true},
+				{"count": 1, "exactCount": false, "considerComments": false},
 			],
 			"import/no-anonymous-default-export": "off",
 			"import/no-default-export": "warn",
