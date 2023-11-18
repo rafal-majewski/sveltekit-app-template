@@ -11,8 +11,6 @@ import importEslintPlugin from "eslint-plugin-import";
 import * as svelteEslintPlugin from "eslint-plugin-svelte";
 // @ts-expect-error - No types available.
 import * as espreeParser from "espree";
-// @ts-expect-error - Satisfying TypeSript here would actually cause ESLint to load the config incorrectly.
-import globals from "globals";
 import * as svelteEslintParser from "svelte-eslint-parser";
 
 export default [
@@ -29,21 +27,8 @@ export default [
 		},
 	},
 	{
-		files: ["**/*.mjs", "**/*.js", "**/*.ts", "**/*.cjs"],
-		languageOptions: {
-			globals: {
-				...globals.node,
-				"NodeJS": true,
-			},
-		},
-	},
-	{
 		languageOptions: {
 			ecmaVersion: 13,
-			globals: {
-				...globals.es2021,
-				...globals.browser,
-			},
 		},
 		plugins: {
 			"import": importEslintPlugin,
@@ -94,7 +79,8 @@ export default [
 			"no-sparse-arrays": "error",
 			"no-template-curly-in-string": "off",
 			"no-this-before-super": "error",
-			"no-undef": "error",
+			// We use TypeScript for that.
+			"no-undef": "off",
 			"no-unexpected-multiline": "error",
 			"no-unmodified-loop-condition": "error",
 			"no-unreachable": "error",
@@ -785,9 +771,6 @@ export default [
 			parser: svelteEslintParser,
 			parserOptions: {
 				parser: typescriptEslintParser,
-			},
-			globals: {
-				"$$Generic": false,
 			},
 		},
 		plugins: {
