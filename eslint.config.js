@@ -204,7 +204,7 @@ export default [
 					"builtinGlobals": true,
 					"hoist": "all",
 					"ignoreOnInitialization": true,
-					"allow": ["event", "screen"],
+					"allow": ["_"],
 				},
 			],
 			"no-shadow-restricted-names": "error",
