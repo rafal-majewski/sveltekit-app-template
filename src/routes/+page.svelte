@@ -1,10 +1,10 @@
 <script lang="ts" strictEvents>
 	import type {Todo} from "$lib/features/todos/Todo.ts";
 	import LandingPage from "$lib/landing-page/LadingPage.svelte";
-	import type {PageServerData} from "./$types.ts";
+	import type {PageData} from "./$types.ts";
 	import type {DeepReadonly} from "ts-essentials";
 
-	export let data: DeepReadonly<PageServerData>;
+	export let data: PageData;
 
 	const todos: DeepReadonly<Todo[]> = [{content: "My first todo", id: 1, isCompleted: false}];
 </script>
