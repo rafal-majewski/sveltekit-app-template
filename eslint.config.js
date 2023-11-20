@@ -91,7 +91,7 @@ export default [
 			"no-unused-private-class-members": "warn",
 			"no-unused-vars": [
 				"warn",
-				{"vars": "all", "args": "all", "caughtErrors": "all", "ignoreRestSiblings": false},
+				{"vars": "all", "args": "after-used", "caughtErrors": "all", "ignoreRestSiblings": false},
 			],
 			"no-use-before-define": [
 				"error",
@@ -702,7 +702,7 @@ export default [
 			"no-unused-vars": "off",
 			"@typescript-eslint/no-unused-vars": [
 				"warn",
-				{"vars": "all", "args": "all", "caughtErrors": "all", "ignoreRestSiblings": false},
+				{"vars": "all", "args": "after-used", "caughtErrors": "all", "ignoreRestSiblings": false},
 			],
 			"no-use-before-define": "off",
 			"@typescript-eslint/no-use-before-define": [
@@ -881,7 +881,7 @@ export default [
 				"warn",
 				{
 					"vars": "all",
-					"args": "all",
+					"args": "after-used",
 					"caughtErrors": "all",
 					"ignoreRestSiblings": false,
 					"varsIgnorePattern": "^\\$\\$Slots$",
