@@ -11,7 +11,7 @@
 
 <svelte:head>
 	<title>My App</title>
-	<link rel="icon" href="/favicon.png" type="image/png" />
+	<link href="/favicon.png" rel="icon" type="image/png" />
 </svelte:head>
 
-<LandingPage welcomeMessage={data.welcomeMessage} {todos} />
+<LandingPage {todos} welcomeMessage={data.welcomeMessage} />

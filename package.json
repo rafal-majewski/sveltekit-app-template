@@ -1,35 +1,13 @@
 {
-	"name": "sveltekit-app-template",
-	"version": "2.0.3",
-	"private": true,
-	"description": "SvelteKit app template",
-	"scripts": {
-		"build": "svelte-kit sync && vite build",
-		"preview": "svelte-kit sync && vite preview",
-		"dev": "svelte-kit sync && vite dev",
-		"prettier:fix": "prettier --write .",
-		"prettier:check": "prettier --check .",
-		"eslint:fix": "svelte-kit sync && eslint --fix .",
-		"eslint:check": "svelte-kit sync && eslint --max-warnings 0 .",
-		"typescript:check": "svelte-kit sync && tsc --noEmit",
-		"svelte:check": "svelte-kit sync && svelte-check --fail-on-warnings",
-		"build:check": "svelte-kit sync && svelte-check --fail-on-warnings --tsconfig ./tsconfig.json",
-		"formatting:check": "prettier --check .",
-		"formatting:fix": "prettier --write .",
-		"playwright:check": "svelte-kit sync && vite build && playwright test --pass-with-no-tests '.+\\.e2e\\.test\\.[ts|js|cjs|mjs]'",
-		"vitest:check": "svelte-kit sync && vitest run --passWithNoTests --coverage",
-		"release": "release-it"
-	},
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/Rafal-Majewski/sveltekit-app-template.git"
-	},
 	"author": "Rafał Majewski",
-	"license": "CC0-1.0",
 	"bugs": {
 		"url": "https://github.com/Rafal-Majewski/sveltekit-app-template/issues"
 	},
-	"homepage": "https://github.com/Rafal-Majewski/sveltekit-app-template#readme",
+	"dependencies": {
+		"dotenv": "16.3.1",
+		"envalid": "8.0.0"
+	},
+	"description": "SvelteKit app template",
 	"devDependencies": {
 		"@j-ulrich/release-it-regex-bumper": "5.0.0",
 		"@playwright/test": "1.40.0",
@@ -59,9 +37,31 @@
 		"vite": "4.5.0",
 		"vitest": "0.34.6"
 	},
+	"homepage": "https://github.com/Rafal-Majewski/sveltekit-app-template#readme",
+	"license": "CC0-1.0",
+	"name": "sveltekit-app-template",
+	"private": true,
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/Rafal-Majewski/sveltekit-app-template.git"
+	},
+	"scripts": {
+		"build": "svelte-kit sync && vite build",
+		"build:check": "svelte-kit sync && svelte-check --fail-on-warnings --tsconfig ./tsconfig.json",
+		"dev": "svelte-kit sync && vite dev",
+		"eslint:check": "svelte-kit sync && eslint --max-warnings 0 .",
+		"eslint:fix": "svelte-kit sync && eslint --fix .",
+		"formatting:check": "prettier --check .",
+		"formatting:fix": "prettier --write .",
+		"playwright:check": "svelte-kit sync && vite build && playwright test --pass-with-no-tests '.+\\.e2e\\.test\\.[ts|js|cjs|mjs]'",
+		"prettier:check": "prettier --check .",
+		"prettier:fix": "prettier --write .",
+		"preview": "svelte-kit sync && vite preview",
+		"release": "release-it",
+		"svelte:check": "svelte-kit sync && svelte-check --fail-on-warnings",
+		"typescript:check": "svelte-kit sync && tsc --noEmit",
+		"vitest:check": "svelte-kit sync && vitest run --passWithNoTests --coverage"
+	},
 	"type": "module",
-	"dependencies": {
-		"dotenv": "16.3.1",
-		"envalid": "8.0.0"
-	}
+	"version": "2.0.3"
 }

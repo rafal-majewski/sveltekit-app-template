@@ -10,13 +10,13 @@
 			"out": [
 				{
 					"file": "./helm/Chart.yaml",
-					"search": "version: (.*)",
-					"replace": "version: {{version}}"
+					"replace": "version: {{version}}",
+					"search": "version: (.*)"
 				},
 				{
 					"file": "./helm/Chart.yaml",
-					"search": "appVersion: \"(.*)\"",
-					"replace": "appVersion: \"{{version}}\""
+					"replace": "appVersion: \"{{version}}\"",
+					"search": "appVersion: \"(.*)\""
 				}
 			]
 		}

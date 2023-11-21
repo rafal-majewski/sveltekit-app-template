@@ -4,7 +4,13 @@ import {describe, test, expect} from "vitest";
 
 describe("TodoOnTodosList", () => {
 	test("renders", () => {
-		render(TodoOnTodosList, {todo: {id: 1, content: "My first todo", isCompleted: false}});
+		render(TodoOnTodosList, {
+			todo: {
+				content: "My first todo",
+				id: 1,
+				isCompleted: false,
+			},
+		});
 		expect(() => {
 			screen.getByText("My first todo");
 		}).not.toThrow();
