@@ -1,9 +1,9 @@
 import type {PageServerLoad} from "./$types.ts";
 
 export const load: PageServerLoad = async () => {
-	const {appConfig} = await import("$lib/server/app-config/appConfig.ts");
+	const {appConfig} = await import("$lib/server/instances/app-config/appConfig.ts");
 
 	return {
-		welcomeMessage: appConfig.WELCOME_MESSAGE,
+		welcomeMessage: appConfig.welcomeMessage,
 	} as const;
 };
