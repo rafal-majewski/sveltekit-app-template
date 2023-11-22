@@ -7,7 +7,7 @@ describe("Docker image", () => {
 	test("builds", async () => {
 		await new testcontainers.GenericContainerBuilder(".", "Dockerfile")
 			.withBuildArgs({
-				"NODE_VERSION": dockerImageNodeVersion,
+				NODE_VERSION: dockerImageNodeVersion,
 			})
 			.build();
 	}, 100000);
@@ -17,7 +17,7 @@ describe("Docker container", () => {
 	test("starts", async () => {
 		const container = await new testcontainers.GenericContainerBuilder(".", "Dockerfile")
 			.withBuildArgs({
-				"NODE_VERSION": dockerImageNodeVersion,
+				NODE_VERSION: dockerImageNodeVersion,
 			})
 			.build();
 		await container.start();
@@ -25,7 +25,7 @@ describe("Docker container", () => {
 	test('requires "WELCOME_MESSAGE" environment variable', async () => {
 		const container = await new testcontainers.GenericContainerBuilder(".", "Dockerfile")
 			.withBuildArgs({
-				"NODE_VERSION": dockerImageNodeVersion,
+				NODE_VERSION: dockerImageNodeVersion,
 			})
 			.build();
 		const startedContainer = await container.start();
