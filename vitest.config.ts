@@ -15,7 +15,6 @@ export default defineConfig({
 			reporter: ["html", "text"],
 			reportsDirectory: "coverage-report",
 		},
-		environment: "jsdom",
 		include: ["**/*.unit.test.cjs", "**/*.unit.test.js", "**/*.unit.test.mjs", "**/*.unit.test.ts"],
 	},
 });
