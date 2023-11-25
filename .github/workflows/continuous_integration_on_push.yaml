@@ -17,7 +17,7 @@ jobs:
       - name: Setup Helm
         uses: azure/setup-helm@v3
         with:
-          version: ${{ env.SETUP_HELM_HELM_VERSION }}
+          version: ${{env.SETUP_HELM_HELM_VERSION}}
       - name: Run Helm lint
         run: |
           helm lint helm
@@ -40,7 +40,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: ${{ env.SETUP_NODE_NODE_VERSION }}
+          node-version: ${{env.SETUP_NODE_NODE_VERSION}}
           cache: "npm"
       - name: Install dependencies
         run: |
@@ -57,7 +57,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: ${{ env.SETUP_NODE_NODE_VERSION }}
+          node-version: ${{env.SETUP_NODE_NODE_VERSION}}
           cache: "npm"
       - name: Install dependencies
         run: |
@@ -74,7 +74,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: ${{ env.SETUP_NODE_NODE_VERSION }}
+          node-version: ${{env.SETUP_NODE_NODE_VERSION}}
           cache: "npm"
       - name: Install dependencies
         run: |
@@ -96,7 +96,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: ${{ env.SETUP_NODE_NODE_VERSION }}
+          node-version: ${{env.SETUP_NODE_NODE_VERSION}}
           cache: "npm"
       - name: Install dependencies
         run: |
@@ -113,7 +113,7 @@ jobs:
         uses: actions/checkout@v4
       - name: Build a Docker image
         run: |
-          docker build --tag=${{ github.repository }}:${{ github.sha }} --file=Dockerfile --build-arg="NODE_VERSION=${{ env.SETUP_NODE_NODE_VERSION }}" .
+          docker build --tag=${{github.repository}}:${{github.sha}} --file=Dockerfile --build-arg="NODE_VERSION=${{env.SETUP_NODE_NODE_VERSION}}" .
   helm_package:
     name: Helm package
     needs: [helm_lint_check]
@@ -132,7 +132,7 @@ jobs:
       - name: Setup Helm
         uses: azure/setup-helm@v3
         with:
-          version: ${{ env.SETUP_HELM_HELM_VERSION }}
+          version: ${{env.SETUP_HELM_HELM_VERSION}}
       - name: Build Helm package dependencies
         run: |
           helm dependency build helm
@@ -143,4 +143,4 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: helm-chart
-          path: ./${{ steps.remember_helm_chart_name.outputs.helm_chart_name }}-${{ steps.remember_helm_chart_version.outputs.helm_chart_version }}.tgz
+          path: ./${{steps.remember_helm_chart_name.outputs.helm_chart_name}}-${{steps.remember_helm_chart_version.outputs.helm_chart_version}}.tgz
