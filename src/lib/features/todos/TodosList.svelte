@@ -1,6 +1,6 @@
 <script lang="ts" strictEvents>
-	import type {Todo} from "./Todo.ts";
-	import TodoOnTodosList from "./TodoOnTodosList.svelte";
+	import type {Todo} from "$lib/features/todos/Todo.ts";
+	import TodoOnTodosList from "$lib/features/todos/TodoOnTodosList.svelte";
 	import type {DeepReadonly} from "ts-essentials";
 
 	export let todos: DeepReadonly<Todo[]>;
