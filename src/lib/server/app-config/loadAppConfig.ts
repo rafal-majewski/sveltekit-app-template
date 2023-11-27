@@ -1,6 +1,6 @@
-import type {AppConfig} from "./AppConfig.ts";
-import type {DotEnv} from "./DotEnv.ts";
-import {dotEnvSchema} from "./dotEnvSchema.ts";
+import type {AppConfig} from "$lib/server/app-config/AppConfig.ts";
+import type {DotEnv} from "$lib/server/app-config/DotEnv.ts";
+import {dotEnvSchema} from "$lib/server/app-config/dotEnvSchema.ts";
 import * as envalid from "envalid";
 
 export function loadAppConfig(dotEnv: DotEnv): AppConfig {
