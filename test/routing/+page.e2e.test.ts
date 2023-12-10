@@ -22,7 +22,7 @@ test.describe("/", () => {
 			throw new Error("No local URL");
 		}
 		await page.goto(server.resolvedUrls.local[0]);
-		await expect(page.locator(".todo-on-todos-list")).toContainText("My first todo");
+		await expect(page.locator("ul > li")).toContainText("My first todo");
 		server.httpServer.close();
 	});
 });
