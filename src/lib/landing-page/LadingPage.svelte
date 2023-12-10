@@ -7,8 +7,8 @@
 	export let welcomeMessage: string;
 </script>
 
-<div class="landing-page">
+<main>
 	<h1>SvelteKit app template</h1>
 	<p>{welcomeMessage}</p>
 	<TodosList {todos} />
-</div>
+</main>

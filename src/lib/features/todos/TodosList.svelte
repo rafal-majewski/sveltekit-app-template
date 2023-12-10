@@ -6,10 +6,8 @@
 	export let todos: DeepReadonly<Todo[]>;
 </script>
 
-<ul class="todos-list">
-	{#each todos as todo}
-		<li class="todos-list__item">
-			<TodoOnTodosList {todo} />
-		</li>
+<ul>
+	{#each todos as todo (todo.id)}
+		<TodoOnTodosList {todo} />
 	{/each}
 </ul>

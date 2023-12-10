@@ -5,6 +5,6 @@
 	export let todo: DeepReadonly<Todo>;
 </script>
 
-<div class="todo-on-todos-list">
+<li>
 	{todo.content}
-</div>
+</li>
