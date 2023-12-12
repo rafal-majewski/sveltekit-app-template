@@ -11,6 +11,7 @@ describe("TodoOnTodosList", () => {
 				isCompleted: false,
 			},
 		});
+
 		expect(() => {
 			screen.getByText("My first todo");
 		}).not.toThrow();

@@ -6,7 +6,13 @@
 
 	export let data: PageData;
 
-	const todos: DeepReadonly<Todo[]> = [{content: "My first todo", id: 1, isCompleted: false}];
+	const todos: DeepReadonly<Todo[]> = [
+		{
+			content: "My first todo",
+			id: 1,
+			isCompleted: false,
+		},
+	];
 </script>
 
 <svelte:head>
