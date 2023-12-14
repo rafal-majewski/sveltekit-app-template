@@ -83,7 +83,7 @@ jobs:
         run: |
           npm run vitest:check
       - name: Upload coverage report
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: coverage-report
           path: coverage-report
@@ -140,7 +140,7 @@ jobs:
         run: |
           helm package helm
       - name: Upload Helm package
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: helm-chart
           path: ./${{steps.remember_helm_chart_name.outputs.helm_chart_name}}-${{steps.remember_helm_chart_version.outputs.helm_chart_version}}.tgz
