@@ -32,8 +32,11 @@ describe("Docker container", () => {
 			.build();
 
 		const startedContainer = await container.start();
+
 		const logs = await startedContainer.logs();
+
 		let doLogsContainWelcomeMessageEnvironmentVariableName = false;
+
 		let doLogsContainWordMissing = false;
 
 		logs.on("data", (chunk) => {
@@ -55,6 +58,7 @@ describe("Docker container", () => {
 		});
 
 		expect(doLogsContainWelcomeMessageEnvironmentVariableName).toBe(true);
+
 		expect(doLogsContainWordMissing).toBe(true);
 	});
 });
