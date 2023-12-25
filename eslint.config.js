@@ -1153,12 +1153,6 @@ export default [
 			],
 			"svelte/spaced-html-comment": ["error", "always"],
 			"svelte/system": "error",
-			"svelte/valid-compile": [
-				"error",
-				{
-					ignoreWarnings: false,
-				},
-			],
 			"svelte/valid-each-key": "error",
 			"svelte/valid-prop-names-in-kit-pages": "error",
 		},
