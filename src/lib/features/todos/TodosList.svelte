@@ -1,3 +1,5 @@
+<svelte:options immutable={true} />
+
 <script lang="ts" strictEvents>
 	import type {Todo} from "$lib/features/todos/Todo.ts";
 	import TodoOnTodosList from "$lib/features/todos/TodoOnTodosList.svelte";
