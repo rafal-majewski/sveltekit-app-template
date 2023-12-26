@@ -1,3 +1,5 @@
+<svelte:options immutable={true} />
+
 <script lang="ts" strictEvents>
 	import type {Todo} from "$lib/features/todos/Todo.ts";
 	import LandingPage from "$lib/landing-page/LadingPage.svelte";

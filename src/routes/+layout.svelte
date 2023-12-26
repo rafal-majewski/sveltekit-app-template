@@ -1,3 +1,5 @@
+<svelte:options immutable={true} />
+
 <div class="svelte-app-root">
 	<slot />
 </div>
