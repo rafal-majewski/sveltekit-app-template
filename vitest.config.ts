@@ -1,10 +1,10 @@
 import {svelte} from "@sveltejs/vite-plugin-svelte";
 import {defineConfig} from "vitest/config";
 
-export default defineConfig({
+const vitestConfig = defineConfig({
 	plugins: [
 		svelte({
-			hot: process.env["VITEST"] === undefined,
+			hot: typeof process.env["VITEST"] === "undefined",
 		}),
 	],
 	resolve: {
@@ -29,3 +29,5 @@ export default defineConfig({
 		include: ["**/*.unit.test.cjs", "**/*.unit.test.js", "**/*.unit.test.mjs", "**/*.unit.test.ts"],
 	},
 });
+
+export default vitestConfig;

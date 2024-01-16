@@ -1,3 +1,5 @@
 import type {PlaywrightTestConfig} from "@playwright/test";
 
-export default ((): PlaywrightTestConfig => ({}))();
+const playwrightConfig: PlaywrightTestConfig = {};
+
+export default playwrightConfig;

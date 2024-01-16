@@ -55,7 +55,7 @@
 		"noStrictGenericChecks": false,
 		"noUncheckedIndexedAccess": true,
 		"noUnusedLocals": true,
-		"noUnusedParameters": false,
+		"noUnusedParameters": true,
 		"outDir": "./dist",
 		"plugins": [],
 		"preserveConstEnums": true,

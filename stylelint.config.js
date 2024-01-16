@@ -1,4 +1,4 @@
-export default {
+const stylelintConfig = {
 	overrides: [
 		{
 			customSyntax: "postcss-html",
@@ -708,3 +708,5 @@ export default {
 		],
 	},
 };
+
+export default stylelintConfig;
