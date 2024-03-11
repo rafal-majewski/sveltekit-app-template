@@ -11,6 +11,8 @@
 
 <main>
 	<h1>SvelteKit app template</h1>
-	<p>{welcomeMessage}</p>
+	<p>
+		{welcomeMessage}
+	</p>
 	<TodosList {todos} />
 </main>

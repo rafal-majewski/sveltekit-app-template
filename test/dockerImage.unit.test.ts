@@ -1,11 +1,11 @@
-import * as testcontainers from "testcontainers";
+import * as Testcontainers from "testcontainers";
 import {describe, expect, test} from "vitest";
 
 const dockerImageNodeVersion = "19.7";
 
-describe("Docker image", () => {
-	test("builds", async () => {
-		await new testcontainers.GenericContainerBuilder(".", "Dockerfile")
+describe("Docker image", (): void => {
+	test("builds", async (): Promise<void> => {
+		await new Testcontainers.GenericContainerBuilder(".", "Dockerfile")
 			.withBuildArgs({
 				NODE_VERSION: dockerImageNodeVersion,
 			})
@@ -13,9 +13,9 @@ describe("Docker image", () => {
 	}, 100000);
 });
 
-describe("Docker container", () => {
-	test("starts", async () => {
-		const container = await new testcontainers.GenericContainerBuilder(".", "Dockerfile")
+describe("Docker container", (): void => {
+	test("starts", async (): Promise<void> => {
+		const container = await new Testcontainers.GenericContainerBuilder(".", "Dockerfile")
 			.withBuildArgs({
 				NODE_VERSION: dockerImageNodeVersion,
 			})
@@ -24,22 +24,19 @@ describe("Docker container", () => {
 		await container.start();
 	}, 100000);
 
-	test('requires "WELCOME_MESSAGE" environment variable', async () => {
-		const container = await new testcontainers.GenericContainerBuilder(".", "Dockerfile")
+	test('requires "WELCOME_MESSAGE" environment variable', async (): Promise<void> => {
+		const container = await new Testcontainers.GenericContainerBuilder(".", "Dockerfile")
 			.withBuildArgs({
 				NODE_VERSION: dockerImageNodeVersion,
 			})
 			.build();
 
 		const startedContainer = await container.start();
-
 		const logs = await startedContainer.logs();
-
 		let doLogsContainWelcomeMessageEnvironmentVariableName = false;
-
 		let doLogsContainWordMissing = false;
 
-		logs.on("data", (chunk) => {
+		logs.on("data", (chunk: unknown): void => {
 			if (typeof chunk === "string") {
 				if (chunk.includes("WELCOME_MESSAGE")) {
 					doLogsContainWelcomeMessageEnvironmentVariableName = true;
@@ -51,14 +48,13 @@ describe("Docker container", () => {
 			}
 		});
 
-		await new Promise<void>((resolve) => {
-			logs.on("end", () => {
+		await new Promise<void>((resolve: () => void): void => {
+			logs.on("end", (): void => {
 				resolve();
 			});
 		});
 
 		expect(doLogsContainWelcomeMessageEnvironmentVariableName).toBe(true);
-
 		expect(doLogsContainWordMissing).toBe(true);
 	});
 });

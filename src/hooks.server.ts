@@ -1,14 +1,21 @@
-import * as appEnvironment from "$app/environment";
+import * as AppEnvironment from "$app/environment";
+import {preloadAppConfig} from "$lib/server/instances/app-config/preloadAppConfig.ts";
 import type {Handle} from "@sveltejs/kit";
 
-// Validate environment variables by importing appConfig
-if (!appEnvironment.building) {
-	import("$lib/server/instances/app-config/appConfig.ts");
+if (!AppEnvironment.building) {
+	preloadAppConfig();
 }
 
-export const handle: Handle = async ({event, resolve}) => {
+export const handle: Handle = async ({
+	event,
+	resolve,
+}: Parameters<Handle>[0]): Promise<Response> => {
 	const response = await resolve(event, {
-		transformPageChunk: ({html}) => html.replace(/%sveltekit\.lang%/gu, "en"),
+		transformPageChunk: ({
+			html,
+		}: Readonly<{
+			html: string;
+		}>): string => html.replace(/%sveltekit\.lang%/gu, "en"),
 	});
 
 	return response;

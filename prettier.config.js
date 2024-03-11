@@ -1,4 +1,4 @@
-module.exports = {
+const prettierConfig = {
 	arrowParens: "always",
 	bracketSameLine: false,
 	bracketSpacing: false,
@@ -14,3 +14,5 @@ module.exports = {
 	trailingComma: "all",
 	useTabs: true,
 };
+
+export default prettierConfig;
