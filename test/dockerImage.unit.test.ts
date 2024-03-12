@@ -1,6 +1,5 @@
 import * as Testcontainers from "testcontainers";
 import {describe, expect, test} from "vitest";
-
 const dockerImageNodeVersion = "19.7";
 
 describe("Docker image", (): void => {

@@ -78,54 +78,59 @@ const eslintConfig = [
 			"@stylistic/padding-line-between-statements": [
 				"warn",
 				{
+					blankLine: "never",
+					next: "singleline-const",
+					prev: "singleline-const",
+				},
+				{
+					blankLine: "never",
+					next: "singleline-let",
+					prev: "singleline-const",
+				},
+				{
+					blankLine: "never",
+					next: "singleline-const",
+					prev: "singleline-let",
+				},
+				{
+					blankLine: "never",
+					next: "singleline-let",
+					prev: "singleline-let",
+				},
+				{
+					blankLine: "never",
+					next: "expression",
+					prev: "expression",
+				},
+				{
 					blankLine: "always",
 					next: "*",
+					prev: "multiline-expression",
+				},
+				{
+					blankLine: "always",
+					next: "multiline-expression",
 					prev: "*",
 				},
 				{
-					blankLine: "never",
-					next: "import",
-					prev: "import",
-				},
-				{
-					blankLine: "never",
-					next: "singleline-const",
-					prev: "singleline-const",
-				},
-				{
-					blankLine: "never",
-					next: "singleline-const",
-					prev: "singleline-let",
-				},
-				{
-					blankLine: "never",
-					next: "singleline-let",
-					prev: "singleline-const",
-				},
-				{
-					blankLine: "never",
-					next: "singleline-let",
-					prev: "singleline-let",
-				},
-				{
-					blankLine: "never",
-					next: "expression",
-					prev: "expression",
+					blankLine: "always",
+					next: "multiline-block-like",
+					prev: "*",
 				},
 				{
 					blankLine: "always",
-					next: "multiline-expression",
-					prev: "expression",
+					next: "*",
+					prev: "multiline-block-like",
 				},
 				{
 					blankLine: "always",
-					next: "multiline-expression",
-					prev: "multiline-expression",
+					next: "multiline-const",
+					prev: "*",
 				},
 				{
 					blankLine: "always",
-					next: "expression",
-					prev: "multiline-expression",
+					next: "*",
+					prev: "multiline-const",
 				},
 			],
 			"@stylistic/spaced-comment": [
