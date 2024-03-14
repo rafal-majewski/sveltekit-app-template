@@ -744,7 +744,7 @@ const eslintConfig = [
 				"error",
 				{
 					bundledDependencies: [],
-					devDependencies: ["./test/**/*.test.ts", "./eslint.config.js", "./svelte.config.js"],
+					devDependencies: ["./**/*.test.ts", "./eslint.config.js", "./svelte.config.js"],
 					optionalDependencies: [],
 					peerDependencies: [],
 				},
