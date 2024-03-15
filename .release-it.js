@@ -23,6 +23,35 @@ const releaseItConfig = {
 				},
 			],
 		},
+		"@release-it/conventional-changelog": {
+			infile: "./CHANGELOG.md",
+			header: "# Changelog",
+			ignoreRecommendedBump: false,
+			strictSemVer: false,
+			preset: {
+				name: "conventionalcommits",
+				types: [
+					{
+						type: "feature",
+						section: "Features",
+					},
+					{
+						type: "fix",
+						section: "Bug fixes",
+					},
+					{
+						type: "chore",
+						section: "Chores",
+					},
+				],
+			},
+			parserOpts: {
+				mergePattern: "^Merge pull request #(\\d+) from (.*)$",
+			},
+			writerOpts: {
+				groupBy: "type",
+			},
+		},
 	},
 };
 
