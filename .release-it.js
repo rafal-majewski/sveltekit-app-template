@@ -5,6 +5,9 @@ const releaseItConfig = {
 	npm: {
 		publish: false,
 	},
+	git: {
+		commitMessage: "chore: release `${version}`",
+	},
 	plugins: {
 		"@j-ulrich/release-it-regex-bumper": {
 			out: [
