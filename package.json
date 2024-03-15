@@ -71,5 +71,5 @@
 		"vitest:check": "svelte-kit sync && vitest run --passWithNoTests --coverage"
 	},
 	"type": "module",
-	"version": "2.0.3"
+	"version": "3.0.0"
 }
