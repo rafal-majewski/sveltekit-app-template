@@ -15,7 +15,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
       - name: Setup Helm
-        uses: azure/setup-helm@v3
+        uses: azure/setup-helm@v4
         with:
           version: ${{env.SETUP_HELM_HELM_VERSION}}
       - name: Run Helm lint
@@ -147,7 +147,7 @@ jobs:
         run: |
           echo "helm_chart_name=$(grep '^name:' ./helm/Chart.yaml | awk '{print $2}')" >> $GITHUB_OUTPUT
       - name: Setup Helm
-        uses: azure/setup-helm@v3
+        uses: azure/setup-helm@v4
         with:
           version: ${{env.SETUP_HELM_HELM_VERSION}}
       - name: Build Helm package dependencies

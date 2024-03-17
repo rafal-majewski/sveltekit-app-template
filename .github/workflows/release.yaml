@@ -116,7 +116,7 @@ jobs:
           shopt -u dotglob
           rm -rf ./${{github.event.repository.owner.login}}-${{github.event.repository.name}}-*/
       - name: Setup Helm
-        uses: azure/setup-helm@v3
+        uses: azure/setup-helm@v4
         with:
           version: ${{env.SETUP_HELM_HELM_VERSION}}
       - name: Remember Helm chart version
