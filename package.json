@@ -41,7 +41,7 @@
 		"ts-essentials": "9.4.1",
 		"typescript": "5.3.3",
 		"vite": "5.1.7",
-		"vitest": "1.2.0"
+		"vitest": "1.5.0"
 	},
 	"homepage": "https://github.com/Rafal-Majewski/sveltekit-app-template#readme",
 	"license": "CC0-1.0",
