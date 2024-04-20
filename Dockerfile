@@ -5,7 +5,7 @@ COPY package.json package-lock.json ./
 RUN npm ci
 COPY . .
 RUN find ./src -name "*.test.ts" -type f -delete && npm run build
-FROM node:${NODE_VERSION}-alpine3.17
+FROM node:${NODE_VERSION}-alpine3.17 AS runner
 RUN adduser --disabled-password --gecos '' appuser
 WORKDIR /home/appuser
 COPY --from=builder --chown=appuser:appuser /app/package.json /app/package-lock.json ./
