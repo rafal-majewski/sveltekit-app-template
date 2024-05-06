@@ -71,7 +71,7 @@ jobs:
         run: |
           docker build --tag=${{vars.DOCKER_REGISTRY_REPOSITORY_NAME}}:${{needs.release.outputs.release_version}} --file=Dockerfile --build-arg="NODE_VERSION=${{env.SETUP_NODE_NODE_VERSION}}" .
       - name: Upload the Docker image as an artifact
-        uses: ishworkh/container-image-artifact-upload@v1.0.0
+        uses: ishworkh/container-image-artifact-upload@v1.1.1
         with:
           image: ${{vars.DOCKER_REGISTRY_REPOSITORY_NAME}}:${{needs.release.outputs.release_version}}
     outputs:
