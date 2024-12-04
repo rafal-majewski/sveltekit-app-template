@@ -8,3 +8,4 @@ The following tools have been configured:
 - [Git](https://git-scm.com/) for version control;
 - [npm](https://www.npmjs.com) for Node.js package management;
 - [Prettier](https://prettier.io) for files formatting;
+- [Vite](https://vite.dev) for bundling and a development server;

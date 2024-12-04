@@ -1,9 +1,11 @@
 {
 	"devDependencies": {
-		"prettier": "3.4.2"
+		"prettier": "3.4.2",
+		"vite": "6.0.3"
 	},
 	"name": "sveltekit-app-template",
 	"scripts": {
+		"dev": "vite",
 		"prettier:check": "prettier --check .",
 		"prettier:fix": "prettier --write ."
 	},
