@@ -1,11 +1,7 @@
-import type {PageServerLoad} from "./$types.ts";
+import type {PageServerLoad} from "./$types.js";
 
-type LoadReturnValue = Readonly<{
-	welcomeMessage: string;
-}>;
-
-export const load: PageServerLoad = async (): Promise<LoadReturnValue> => {
-	const {appConfig} = await import("$lib/server/instances/app-config/appConfig.ts");
+export const load: PageServerLoad = async () => {
+	const {appConfig} = await import("../lib/server/instances/app-config/appConfig.ts");
 
 	return {
 		welcomeMessage: appConfig.welcomeMessage,

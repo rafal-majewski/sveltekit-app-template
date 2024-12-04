@@ -1,3 +1,8 @@
 import type {PlaywrightTestConfig} from "@playwright/test";
-const playwrightConfig: PlaywrightTestConfig = {};
+
+const playwrightConfig = {
+	use: {},
+	webServer: [],
+} as const satisfies PlaywrightTestConfig;
+
 export default playwrightConfig;

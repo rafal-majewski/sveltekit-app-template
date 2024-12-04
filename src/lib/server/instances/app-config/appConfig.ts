@@ -1,3 +1,10 @@
-import {env} from "$env/dynamic/private";
-import {loadAppConfig} from "$lib/server/app-config/loadAppConfig.ts";
-export const appConfig = loadAppConfig(env);
+import type {AppConfig} from "../../app-config/AppConfig.ts";
+import {appEnvironmentVariablesToAppConfigSchema} from "../../app-config/appEnvironmentVariablesToAppConfigSchema.ts";
+import {loadDotEnv} from "../../loadDotEnv.ts";
+import {parseEnvironmentVariables} from "../../parseEnvironmentVariables.ts";
+loadDotEnv();
+
+export const appConfig: AppConfig = parseEnvironmentVariables(
+	appEnvironmentVariablesToAppConfigSchema,
+	process.env,
+);

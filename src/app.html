@@ -1,28 +1,37 @@
 <!doctype html>
-<html lang="%sveltekit.lang%">
+
+<html lang="en">
 	<head>
-		<meta charset="utf-8" />
-		<meta content="width=device-width,initial-scale=1" name="viewport" />
-		%sveltekit.head%
+		<meta charset="UTF-8" />
+		<meta content="width=device-width, initial-scale=1" name="viewport" />
+		<title>World generator example</title>
+		<link rel="icon" href="data:" />
+
 		<style>
 			*,
 			*::after,
 			*::before {
 				box-sizing: border-box;
 			}
+
 			body {
 				margin: 0;
 			}
+
 			html {
+				display: flex;
+				flex-direction: column;
 				min-height: 100%;
 			}
-			html,
-			body,
-			.sveltekit-body {
-				display: grid;
+
+			body {
+				flex: 1;
 			}
 		</style>
+
+		%sveltekit.head%
 	</head>
+
 	<body>
 		<div class="sveltekit-body">%sveltekit.body%</div>
 	</body>

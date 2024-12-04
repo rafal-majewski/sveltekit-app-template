@@ -1,0 +1,6 @@
+ARG ALPINE_VERSION
+ARG NODE_JS_VERSION
+FROM node:${NODE_JS_VERSION}-alpine${ALPINE_VERSION} AS developer
+WORKDIR /home/developer/sveltekit-app-template
+USER root
+RUN apk add --no-cache git ssh

@@ -1,0 +1,126 @@
+env:
+  NODE_JS_VERSION: "22.11.0"
+jobs:
+  build_check:
+    name: "Build check"
+    runs-on: "ubuntu-latest"
+    steps:
+      - name: "Checkout the repository"
+        uses: "actions/checkout@v4"
+      - name: "Setup Node.js"
+        uses: "actions/setup-node@v4"
+        with:
+          cache: "npm"
+          node-version: "${{env.NODE_JS_VERSION}}"
+      - name: "Install the dependencies"
+        run: |
+          npm ci
+      - name: "Run build check"
+        run: |
+          npm run build:check
+  commitlint_check:
+    name: "Commitlint check"
+    runs-on: "ubuntu-latest"
+    steps:
+      - name: "Checkout the repository"
+        uses: "actions/checkout@v4"
+      - name: "Setup Node.js"
+        uses: "actions/setup-node@v4"
+        with:
+          cache: "npm"
+          node-version: "${{env.NODE_JS_VERSION}}"
+      - name: "Install the dependencies"
+        run: |
+          npm ci
+      - name: "Run Commitlint check"
+        run: |
+          npm run commitlint:check -- --last
+  eslint_check:
+    name: "ESLint check"
+    runs-on: "ubuntu-latest"
+    steps:
+      - name: "Checkout the repository"
+        uses: "actions/checkout@v4"
+      - name: "Setup Node.js"
+        uses: "actions/setup-node@v4"
+        with:
+          cache: "npm"
+          node-version: "${{env.NODE_JS_VERSION}}"
+      - name: "Install the dependencies"
+        run: |
+          npm ci
+      - name: "Run ESLint check"
+        run: |
+          npm run eslint:check
+  hadolint_check:
+    name: "Hadolint check"
+    runs-on: "ubuntu-latest"
+    steps:
+      - name: "Checkout the repository"
+        uses: "actions/checkout@v4"
+      - name: "Run Hadolint check"
+        uses: "hadolint/hadolint-action@v3.1.0"
+        with:
+          dockerfile: "Dockerfile"
+  prettier_check:
+    name: "Prettier check"
+    runs-on: "ubuntu-latest"
+    steps:
+      - name: "Checkout the repository"
+        uses: "actions/checkout@v4"
+      - name: "Setup Node.js"
+        uses: "actions/setup-node@v4"
+        with:
+          cache: "npm"
+          node-version: "${{env.NODE_JS_VERSION}}"
+      - name: "Install the dependencies"
+        run: |
+          npm ci
+      - name: "Run Prettier check"
+        run: |
+          npm run prettier:check
+  stylelint_check:
+    name: "Stylelint check"
+    runs-on: "ubuntu-latest"
+    steps:
+      - name: "Checkout the repository"
+        uses: "actions/checkout@v4"
+      - name: "Setup Node.js"
+        uses: "actions/setup-node@v4"
+        with:
+          node-version: "${{env.NODE_JS_VERSION}}"
+          cache: "npm"
+      - name: "Install the dependencies"
+        run: |
+          npm ci
+      - name: "Run Stylelint check"
+        run: |
+          npm run stylelint:check
+  vitest_check:
+    name: "Vitest check"
+    runs-on: "ubuntu-latest"
+    steps:
+      - name: "Checkout the repository"
+        uses: "actions/checkout@v4"
+      - name: "Setup Node.js"
+        uses: "actions/setup-node@v4"
+        with:
+          node-version: "${{env.NODE_JS_VERSION}}"
+          cache: "npm"
+      - name: "Install the dependencies"
+        run: |
+          npm ci
+      - env:
+          ALPINE_VERSION: "${{env.ALPINE_VERSION}}"
+          NODE_JS_VERSION: "${{env.NODE_JS_VERSION}}"
+        name: "Run Vitest check"
+        run: |
+          npm run vitest:check
+      - name: "Upload coverage report"
+        uses: "actions/upload-artifact@v4"
+        with:
+          name: "coverage-report"
+          path: "coverage-report"
+name: "Continuous integration on push"
+on:
+  push:

@@ -1,15 +1,15 @@
-import adapter from "@sveltejs/adapter-node";
-import {sveltePreprocess as preprocess} from "svelte-preprocess/dist/autoProcess.js";
+import createNodeAdapter from "@sveltejs/adapter-node";
+import {vitePreprocess as createVitePreprocess} from "@sveltejs/vite-plugin-svelte";
+const nodeAdapter = createNodeAdapter();
+const vitePreprocess = createVitePreprocess();
 
 /** @type {import("@sveltejs/kit").Config} */
 const svelteConfig = {
 	kit: {
-		adapter: adapter(),
-		files: {
-			assets: "./src/assets",
-		},
+		adapter: nodeAdapter,
+		files: {},
 	},
-	preprocess: preprocess(),
+	preprocess: vitePreprocess,
 };
 
 export default svelteConfig;

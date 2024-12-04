@@ -1,140 +1,90 @@
-name: Release
-
-on:
-  workflow_dispatch:
-    inputs:
-      release_type:
-        description: "Release type"
-        required: true
-        type: choice
-        options:
-          - major
-          - minor
-          - patch
-
 env:
-  SETUP_NODE_NODE_VERSION: 19.7
-  SETUP_HELM_HELM_VERSION: v3.11.2
-
+  ALPINE_VERSION: "3.20"
+  NODE_JS_VERSION: "22.11.0"
 jobs:
   release:
-    runs-on: ubuntu-latest
-    name: Release
+    name: "Release"
+    outputs:
+      release_version: "${{steps.remember_release_version.outputs.release_version}}"
+    permissions:
+      contents: "write"
+      pull-requests: "write"
+    runs-on: "ubuntu-latest"
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      - name: "Checkout the repository"
+        uses: "actions/checkout@v4"
         with:
-          node-version: ${{env.SETUP_NODE_NODE_VERSION}}
+          fetch-depth: 0
+      - name: "Setup Node.js"
+        uses: "actions/setup-node@v4"
+        with:
           cache: "npm"
-      - name: git config
+          node-version: "${{env.NODE_JS_VERSION}}"
+      - name: "Configure Git"
         run: |
           git config user.name "${GITHUB_ACTOR}"
           git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
-      - name: Install dependencies
+      - name: "Install the dependencies"
         run: |
           npm ci
-      - name: Release
+      - name: "Release to a new branch"
         env:
-          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          GITHUB_TOKEN: "${{secrets.GITHUB_TOKEN}}"
         run: |
-          npm run release -- --verbose --increment=${{github.event.inputs.release_type}} --ci
-      - name: Remember release version
-        id: remember_release_version
+          npm run release -- --verbose --ci
+      - id: "remember_release_version"
+        name: "Remember release version"
         run: |
           echo "release_version=$(node -p 'require("./package.json").version')" >> $GITHUB_OUTPUT
-    outputs:
-      release_version: ${{steps.remember_release_version.outputs.release_version}}
-
   build_docker_image:
-    name: Build a Docker image
+    name: "Build a Docker image"
     needs: [release]
-    runs-on: ubuntu-latest
+    outputs:
+      release_version: "${{needs.release.outputs.release_version}}"
+    runs-on: "ubuntu-latest"
     steps:
-      - name: Download release
-        uses: robinraju/release-downloader@v1.10
+      - name: "Download the release files"
+        uses: "robinraju/release-downloader@v1.10"
         with:
-          tag: ${{needs.release.outputs.release_version}}
+          tag: "${{needs.release.outputs.release_version}}"
           tarBall: true
-      - name: Unpack release
-        run: tar -xzf ./${{github.event.repository.name}}-${{needs.release.outputs.release_version}}.tar.gz
-      - name: Remove tarball
-        run: rm ./${{github.event.repository.name}}-${{needs.release.outputs.release_version}}.tar.gz
-      - name: Move the files to the current directory
+      - name: "Unpack the release files"
+        run: |
+          tar -xzf ./${{github.event.repository.name}}-${{needs.release.outputs.release_version}}.tar.gz
+      - name: "Remove tarball"
+        run: |
+          rm ./${{github.event.repository.name}}-${{needs.release.outputs.release_version}}.tar.gz
+      - name: "Move the files to the current directory"
         run: |
           shopt -s dotglob
           mv ./${{github.event.repository.owner.login}}-${{github.event.repository.name}}-*/* ./
           shopt -u dotglob
           rm -rf ./${{github.event.repository.owner.login}}-${{github.event.repository.name}}-*/
-      - name: Build a Docker image
+      - name: "Build a Docker image"
         run: |
-          docker build --tag=${{vars.DOCKER_REGISTRY_REPOSITORY_NAME}}:${{needs.release.outputs.release_version}} --file=Dockerfile --build-arg="NODE_VERSION=${{env.SETUP_NODE_NODE_VERSION}}" .
-      - name: Upload the Docker image as an artifact
-        uses: ishworkh/container-image-artifact-upload@v1.1.1
+          docker build --tag=${{vars.DOCKER_REGISTRY_REPOSITORY_NAME}}:${{needs.release.outputs.release_version}} --file=Dockerfile --build-arg="NODE_JS_VERSION=${{env.NODE_JS_VERSION}}" --build-arg="ALPINE_VERSION=${{env.ALPINE_VERSION}}" .
+      - name: "Upload the Docker image as an artifact"
+        uses: "ishworkh/container-image-artifact-upload@v1.1.1"
         with:
-          image: ${{vars.DOCKER_REGISTRY_REPOSITORY_NAME}}:${{needs.release.outputs.release_version}}
-    outputs:
-      release_version: ${{needs.release.outputs.release_version}}
-
+          image: "${{vars.DOCKER_REGISTRY_REPOSITORY_NAME}}:${{needs.release.outputs.release_version}}"
   publish_to_docker_registry:
-    name: Publish to Docker registry
+    name: "Publish to the Docker registry"
     needs: [build_docker_image]
-    runs-on: ubuntu-latest
+    runs-on: "ubuntu-latest"
     steps:
-      - name: Download the built Docker image
-        uses: ishworkh/container-image-artifact-download@v1.0.0
+      - name: "Download the image"
+        uses: "ishworkh/container-image-artifact-download@v1.0.0"
         with:
-          image: ${{vars.DOCKER_REGISTRY_REPOSITORY_NAME}}:${{needs.build_docker_image.outputs.release_version}}
-      - name: Login to Docker registry
-        uses: docker/login-action@v3
+          image: "${{vars.DOCKER_REGISTRY_REPOSITORY_NAME}}:${{needs.build_docker_image.outputs.release_version}}"
+      - name: "Login to the registry"
+        uses: "docker/login-action@v3"
         with:
-          username: ${{secrets.DOCKER_REGISTRY_USERNAME}}
-          password: ${{secrets.DOCKER_REGISTRY_PASSWORD}}
-          registry: ${{vars.DOCKER_REGISTRY_HOST}}
-      - name: Push the Docker image to the registry
+          password: "${{secrets.DOCKER_REGISTRY_PASSWORD}}"
+          registry: "${{vars.DOCKER_REGISTRY_HOST}}"
+          username: "${{vars.DOCKER_REGISTRY_USERNAME}}"
+      - name: "Push the image to the registry"
         run: |
           docker push ${{vars.DOCKER_REGISTRY_HOST}}/${{vars.DOCKER_REGISTRY_REPOSITORY_NAME}}:${{needs.build_docker_image.outputs.release_version}}
-  helm_package:
-    name: Helm package
-    needs: [release]
-    runs-on: ubuntu-latest
-    steps:
-      - name: Download release
-        uses: robinraju/release-downloader@v1.10
-        with:
-          tag: ${{needs.release.outputs.release_version}}
-          tarBall: true
-      - name: Unpack release
-        run: tar -xzf ./${{github.event.repository.name}}-${{needs.release.outputs.release_version}}.tar.gz
-      - name: Remove tarball
-        run: rm ./${{github.event.repository.name}}-${{needs.release.outputs.release_version}}.tar.gz
-      - name: Move the files to the current directory
-        run: |
-          shopt -s dotglob
-          mv ./${{github.event.repository.owner.login}}-${{github.event.repository.name}}-*/* ./
-          shopt -u dotglob
-          rm -rf ./${{github.event.repository.owner.login}}-${{github.event.repository.name}}-*/
-      - name: Setup Helm
-        uses: azure/setup-helm@v4
-        with:
-          version: ${{env.SETUP_HELM_HELM_VERSION}}
-      - name: Remember Helm chart version
-        id: remember_helm_chart_version
-        run: |
-          echo "helm_chart_version=$(grep '^version:' ./helm/Chart.yaml | awk '{print $2}')" >> $GITHUB_OUTPUT
-      - name: Remember Helm chart name
-        id: remember_helm_chart_name
-        run: |
-          echo "helm_chart_name=$(grep '^name:' ./helm/Chart.yaml | awk '{print $2}')" >> $GITHUB_OUTPUT
-      - name: Build Helm package dependencies
-        run: |
-          helm dependency build helm
-      - name: Build Helm package
-        run: |
-          helm package helm
-      - name: Upload Helm package
-        uses: actions/upload-artifact@v4
-        with:
-          name: helm-chart
-          path: ./${{steps.remember_helm_chart_name.outputs.helm_chart_name}}-${{steps.remember_helm_chart_version.outputs.helm_chart_version}}.tgz
+name: "Release"
+on:
+  workflow_dispatch:

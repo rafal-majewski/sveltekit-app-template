@@ -1,33 +1,26 @@
-import {svelte} from "@sveltejs/vite-plugin-svelte";
-import {defineConfig} from "vitest/config";
+import {svelte as createSveltePlugin} from "@sveltejs/vite-plugin-svelte";
+import type {UserConfig} from "vite";
+const sveltePlugin = createSveltePlugin({});
 
-const vitestConfig = defineConfig({
-	plugins: [
-		svelte({
-			hot: typeof process.env["VITEST"] === "undefined",
-		}),
-	],
+const vitestConfig: UserConfig = {
+	plugins: [sveltePlugin],
+
 	resolve: {
-		alias: [
-			{
-				find: /^\$lib$/u,
-				replacement: "/src/lib",
-			},
-			{
-				find: /^\$lib\/(?<pathInLib>.*)$/u,
-				replacement: "/src/lib/$1",
-			},
-		],
+		alias: [],
+		conditions: ["browser"],
 	},
+
 	test: {
 		coverage: {
+			include: ["src/**"],
 			provider: "v8",
 			reporter: ["html", "text"],
 			reportsDirectory: "coverage-report",
 		},
+
 		environment: "jsdom",
-		include: ["**/*.unit.test.cjs", "**/*.unit.test.js", "**/*.unit.test.mjs", "**/*.unit.test.ts"],
+		include: ["**/*.unit.test.ts"],
 	},
-});
+};
 
 export default vitestConfig;

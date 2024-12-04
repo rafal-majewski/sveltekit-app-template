@@ -1,7 +1,0 @@
-port: 3000
-
-replicaCount: 1
-publicWelcomeMessage: "Hello from Helm!"
-
-image:
-  repository: null

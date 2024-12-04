@@ -8,6 +8,9 @@ import sortDestructureKeysEslintPlugin from "eslint-plugin-sort-destructure-keys
 import * as SvelteEslintPlugin from "eslint-plugin-svelte";
 import * as SvelteEslintParser from "svelte-eslint-parser";
 
+/**
+ * @satisfies {import("eslint").Linter.Config[]}
+ * */
 const eslintConfig = [
 	{
 		files: ["**/*.mjs", "**/*.js", "**/*.ts", "**/*.svelte"],
@@ -22,26 +25,28 @@ const eslintConfig = [
 		},
 	},
 	{
-		files: ["**/*.ts", "**/*.js", "**/*.cjs", "**/*.mjs"],
+		files: ["**/*.ts", "**/*.js"],
 		languageOptions: {
 			ecmaVersion: 13,
 			parser: TypescriptEslintParser,
 			parserOptions: {
 				extraFileExtensions: [".svelte"],
-				project: "./tsconfig.json",
-				tsconfigRootDir: ".",
+				projectService: true,
+				tsconfigRootDir: import.meta.dirname,
 			},
 		},
 		settings: {
 			/* Required because of https://github.com/import-js/eslint-plugin-import/issues/2556. */
 			"import/parsers": {
-				"@typescript-eslint/parser": [".ts", ".js", ".cjs", ".mjs"],
+				"@typescript-eslint/parser": [".ts", ".js"],
 			},
 		},
 	},
 	{
 		plugins: {
+			// @ts-expect-error The plugin is typed incorrectly.
 			"@stylistic": stylisticEslintPlugin,
+			// @ts-expect-error The plugin is typed incorrectly.
 			"@typescript-eslint": typescriptEslintPlugin,
 			// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
 			import: importEslintPlugin,
@@ -161,13 +166,6 @@ const eslintConfig = [
 				},
 			],
 			"@typescript-eslint/ban-tslint-comment": ["warn"],
-			"@typescript-eslint/ban-types": [
-				"warn",
-				{
-					extendDefaults: true,
-					types: {},
-				},
-			],
 			"@typescript-eslint/class-literal-property-style": ["warn", "fields"],
 			"@typescript-eslint/class-methods-use-this": [
 				"warn",
@@ -217,7 +215,7 @@ const eslintConfig = [
 					allowFunctionsWithoutTypeParameters: false,
 					allowHigherOrderFunctions: false,
 					allowIIFEs: false,
-					allowTypedFunctionExpressions: false,
+					allowTypedFunctionExpressions: true,
 					allowedNames: [],
 				},
 			],
@@ -235,7 +233,7 @@ const eslintConfig = [
 					allowArgumentsExplicitlyTypedAsAny: false,
 					allowDirectConstAssertionInArrowFunctions: false,
 					allowHigherOrderFunctions: false,
-					allowTypedFunctionExpressions: false,
+					allowTypedFunctionExpressions: true,
 					allowedNames: [],
 				},
 			],
@@ -412,13 +410,6 @@ const eslintConfig = [
 				},
 			],
 			"@typescript-eslint/no-this-alias": ["warn"],
-			"@typescript-eslint/no-throw-literal": [
-				"warn",
-				{
-					allowThrowingAny: false,
-					allowThrowingUnknown: false,
-				},
-			],
 			"@typescript-eslint/no-unnecessary-boolean-literal-compare": [
 				"warn",
 				{
@@ -445,6 +436,7 @@ const eslintConfig = [
 			"@typescript-eslint/no-unsafe-call": ["warn"],
 			"@typescript-eslint/no-unsafe-declaration-merging": ["warn"],
 			"@typescript-eslint/no-unsafe-enum-comparison": ["warn"],
+			"@typescript-eslint/no-unsafe-function-type": ["warn"],
 			"@typescript-eslint/no-unsafe-member-access": ["warn"],
 			"@typescript-eslint/no-unsafe-return": ["warn"],
 			"@typescript-eslint/no-unsafe-unary-minus": ["warn"],
@@ -481,7 +473,15 @@ const eslintConfig = [
 			"@typescript-eslint/no-useless-constructor": ["warn"],
 			"@typescript-eslint/no-useless-empty-export": ["warn"],
 			"@typescript-eslint/no-var-requires": ["warn"],
+			"@typescript-eslint/no-wrapper-object-types": ["warn"],
 			"@typescript-eslint/non-nullable-type-assertion-style": ["warn"],
+			"@typescript-eslint/only-throw-error": [
+				"warn",
+				{
+					allowThrowingAny: false,
+					allowThrowingUnknown: false,
+				},
+			],
 			"@typescript-eslint/parameter-properties": [
 				"warn",
 				{
@@ -658,12 +658,6 @@ const eslintConfig = [
 				},
 			],
 			"block-scoped-var": ["warn"],
-			"consistent-return": [
-				"warn",
-				{
-					treatUndefinedAsUnspecified: false,
-				},
-			],
 			curly: ["warn", "all"],
 			eqeqeq: [
 				"warn",
@@ -729,7 +723,6 @@ const eslintConfig = [
 					maxDepth: Infinity,
 				},
 			],
-			"import/no-default-export": ["warn"],
 			"import/no-deprecated": ["warn"],
 			"import/no-duplicates": [
 				"warn",
@@ -740,15 +733,6 @@ const eslintConfig = [
 			],
 			"import/no-dynamic-require": ["warn"],
 			"import/no-empty-named-blocks": ["warn"],
-			"import/no-extraneous-dependencies": [
-				"error",
-				{
-					bundledDependencies: [],
-					devDependencies: ["./**/*.test.ts", "./eslint.config.js", "./svelte.config.js"],
-					optionalDependencies: [],
-					peerDependencies: [],
-				},
-			],
 			"import/no-import-module-exports": [
 				"warn",
 				{
@@ -758,7 +742,6 @@ const eslintConfig = [
 			"import/no-mutable-exports": ["warn"],
 			"import/no-named-as-default": ["warn"],
 			"import/no-named-default": ["warn"],
-			"import/no-relative-parent-imports": ["warn"],
 			"import/no-self-import": ["warn"],
 			"import/no-unassigned-import": [
 				"warn",
@@ -1119,13 +1102,13 @@ const eslintConfig = [
 			parser: SvelteEslintParser,
 			parserOptions: {
 				extraFileExtensions: [".svelte"],
-				/* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment */
 				parser: TypescriptEslintParser,
 				project: "./tsconfig.json",
 				tsconfigRootDir: ".",
 			},
 		},
 		plugins: {
+			// @ts-expect-error The plugin is typed incorrectly.
 			svelte: SvelteEslintPlugin,
 		},
 		rules: {
@@ -1157,7 +1140,6 @@ const eslintConfig = [
 			],
 			"svelte/derived-has-same-inputs-outputs": ["warn"],
 			"svelte/experimental-require-slot-types": ["warn"],
-			"svelte/experimental-require-strict-events": ["warn"],
 			"svelte/infinite-reactive-loop": ["warn"],
 			"svelte/no-at-debug-tags": ["warn"],
 			"svelte/no-at-html-tags": ["warn"],

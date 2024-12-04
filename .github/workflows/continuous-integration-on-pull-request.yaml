@@ -1,0 +1,149 @@
+env:
+  ALPINE_VERSION: "3.20"
+  NODE_JS_VERSION: "22.11.0"
+jobs:
+  build_check:
+    name: "Build check"
+    runs-on: "ubuntu-latest"
+    steps:
+      - name: "Checkout the repository"
+        uses: "actions/checkout@v4"
+      - name: "Setup Node.js"
+        uses: "actions/setup-node@v4"
+        with:
+          cache: "npm"
+          node-version: "${{env.NODE_JS_VERSION}}"
+      - name: "Install the dependencies"
+        run: |
+          npm ci
+      - name: "Run build check"
+        run: |
+          npm run build:check
+  commitlint_check:
+    name: "Commitlint check"
+    runs-on: "ubuntu-latest"
+    steps:
+      - name: "Checkout the repository"
+        uses: "actions/checkout@v4"
+        with:
+          fetch-depth: 0
+      - name: "Setup Node.js"
+        uses: "actions/setup-node@v4"
+        with:
+          cache: "npm"
+          node-version: "${{env.NODE_JS_VERSION}}"
+      - name: "Install the dependencies"
+        run: |
+          npm ci
+      - name: "Run Commitlint check"
+        run: |
+          npm run commitlint:check -- --from ${{github.event.pull_request.head.sha}}~${{github.event.pull_request.commits}} --to ${{github.event.pull_request.head.sha}}
+  eslint_check:
+    name: "ESLint check"
+    runs-on: "ubuntu-latest"
+    steps:
+      - name: "Checkout the repository"
+        uses: "actions/checkout@v4"
+      - name: "Setup Node.js"
+        uses: "actions/setup-node@v4"
+        with:
+          cache: "npm"
+          node-version: "${{env.NODE_JS_VERSION}}"
+      - name: "Install the dependencies"
+        run: |
+          npm ci
+      - name: "Run ESLint check"
+        run: |
+          npm run eslint:check
+  hadolint_check:
+    name: "Hadolint check"
+    runs-on: "ubuntu-latest"
+    steps:
+      - name: "Checkout the repository"
+        uses: "actions/checkout@v4"
+      - name: "Run Hadolint check"
+        uses: "hadolint/hadolint-action@v3.1.0"
+        with:
+          dockerfile: "Dockerfile"
+  playwright_check:
+    name: "Playwright check"
+    runs-on: "ubuntu-latest"
+    steps:
+      - name: "Checkout the repository"
+        uses: "actions/checkout@v4"
+      - name: "Setup Node.js"
+        uses: "actions/setup-node@v4"
+        with:
+          cache: "npm"
+          node-version: "${{env.SETUP_NODE_NODE_VERSION}}"
+      - name: "Install the dependencies"
+        run: |
+          npm ci
+      - name: "Install browsers"
+        run: |
+          npx playwright install
+      - name: "Run Playwright check"
+        run: |
+          npm run playwright:check
+  prettier_check:
+    name: "Prettier check"
+    runs-on: "ubuntu-latest"
+    steps:
+      - name: "Checkout the repository"
+        uses: "actions/checkout@v4"
+      - name: "Setup Node.js"
+        uses: "actions/setup-node@v4"
+        with:
+          cache: "npm"
+          node-version: "${{env.NODE_JS_VERSION}}"
+      - name: "Install the dependencies"
+        run: |
+          npm ci
+      - name: "Run Prettier check"
+        run: |
+          npm run prettier:check
+  stylelint_check:
+    name: "Stylelint check"
+    runs-on: "ubuntu-latest"
+    steps:
+      - name: "Checkout the repository"
+        uses: "actions/checkout@v4"
+      - name: "Setup Node.js"
+        uses: "actions/setup-node@v4"
+        with:
+          node-version: "${{env.NODE_JS_VERSION}}"
+          cache: "npm"
+      - name: "Install the dependencies"
+        run: |
+          npm ci
+      - name: "Run Stylelint check"
+        run: |
+          npm run stylelint:check
+  vitest_check:
+    name: "Vitest check"
+    runs-on: "ubuntu-latest"
+    steps:
+      - name: "Checkout the repository"
+        uses: "actions/checkout@v4"
+      - name: "Setup Node.js"
+        uses: "actions/setup-node@v4"
+        with:
+          node-version: "${{env.NODE_JS_VERSION}}"
+          cache: "npm"
+      - name: "Install the dependencies"
+        run: |
+          npm ci
+      - env:
+          ALPINE_VERSION: "${{env.ALPINE_VERSION}}"
+          NODE_JS_VERSION: "${{env.NODE_JS_VERSION}}"
+        name: "Run Vitest check"
+        run: |
+          npm run vitest:check
+      - name: "Upload coverage report"
+        uses: "actions/upload-artifact@v4"
+        with:
+          name: "coverage-report"
+          path: "coverage-report"
+name: "Continuous integration on pull request"
+on:
+  pull_request:

@@ -19,7 +19,6 @@ The following following tools have been configured:
 - [Docker](https://www.docker.com/) for containerization
 - [Testcontainers](https://www.npmjs.com/package/testcontainers) for testing with Docker containers
 - [Hadolint](https://github.com/hadolint/hadolint) for linting Dockerfiles
-- [Helm](https://helm.sh) for Kubernetes deployment
 
 ## Usage
 

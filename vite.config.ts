@@ -1,8 +1,9 @@
-import {sveltekit} from "@sveltejs/kit/vite";
+import {sveltekit as createSvelteKitPlugin} from "@sveltejs/kit/vite";
 import type {UserConfig} from "vite";
+const svelteKitPlugin = await createSvelteKitPlugin();
 
 const viteConfig: UserConfig = {
-	plugins: [sveltekit()],
+	plugins: [svelteKitPlugin],
 };
 
 export default viteConfig;

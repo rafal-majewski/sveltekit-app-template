@@ -1,3 +1,4 @@
+/** @satisfies {import("prettier").Options} */
 const prettierConfig = {
 	arrowParens: "always",
 	bracketSameLine: false,
@@ -10,7 +11,7 @@ const prettierConfig = {
 	singleQuote: false,
 	svelteAllowShorthand: true,
 	svelteIndentScriptAndStyle: true,
-	svelteStrictMode: false,
+	svelteSortOrder: "options-scripts-markup-styles",
 	trailingComma: "all",
 	useTabs: true,
 };
