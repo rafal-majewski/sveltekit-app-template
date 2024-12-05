@@ -14,9 +14,7 @@
 	"containerUser": "developer",
 	"customizations": {
 		"vscode": {
-			"extensions": [
-				"esbenp.prettier-vscode"
-			]
+			"extensions": ["esbenp.prettier-vscode"]
 		}
 	},
 	"features": {},
