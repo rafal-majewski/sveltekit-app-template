@@ -1,5 +1,12 @@
 {
+	"devDependencies": {
+		"prettier": "3.4.2"
+	},
 	"name": "sveltekit-app-template",
+	"scripts": {
+		"prettier:check": "prettier --check .",
+		"prettier:fix": "prettier --write ."
+	},
 	"type": "module",
 	"version": "0.0.0"
 }
