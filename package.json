@@ -1,11 +1,14 @@
 {
 	"devDependencies": {
+		"@commitlint/cli": "19.6.0",
+		"@commitlint/types": "19.5.0",
 		"@sveltejs/kit": "2.9.0",
 		"prettier": "3.4.2",
 		"vite": "6.0.3"
 	},
 	"name": "sveltekit-app-template",
 	"scripts": {
+		"commitlint:check": "commitlint --last",
 		"dev": "vite",
 		"prettier:check": "prettier --check .",
 		"prettier:fix": "prettier --write ."

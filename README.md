@@ -4,6 +4,7 @@ This is a template for a SvelteKit TypeScript app.
 
 The following tools have been configured:
 
+- [commitlint](https://commitlint.js.org) for commit message linting;
 - [Development Containers](https://containers.dev) for a consistent development environment;
 - [Git](https://git-scm.com/) for version control;
 - [GitHub Actions](https://github.com/features/actions) for continuous integration;
