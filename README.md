@@ -6,6 +6,7 @@ The following tools have been configured:
 
 - [CodeQL](https://codeql.github.com) for vulnerability scanning;
 - [commitlint](https://commitlint.js.org) for commit message linting;
+- [Dependabot](https://github.com/dependabot) for dependency updates;
 - [Development Containers](https://containers.dev) for a consistent development environment;
 - [Git](https://git-scm.com/) for version control;
 - [GitHub Actions](https://github.com/features/actions) for continuous integration;
